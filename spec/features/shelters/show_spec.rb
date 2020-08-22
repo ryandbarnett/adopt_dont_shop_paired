@@ -45,7 +45,7 @@ RSpec.describe "As a visitor" do
     it "I can see a link to delete the shelter" do
       visit "/shelters/#{@shelter_1.id}"
 
-      expect(page).to have_link('Delete Shelter')
+      expect(page).to have_button('Delete Shelter')
     end
 
     it "when I click the delete shelter link I should be redirected to the shelters index page" do
