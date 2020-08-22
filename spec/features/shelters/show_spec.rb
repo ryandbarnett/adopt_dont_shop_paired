@@ -42,13 +42,13 @@ RSpec.describe "As a visitor" do
       expect(page).to_not have_content(@shelter_2.zip)
     end
 
-    it "I can see a link to delete the shelter" do
+    it "I can see a button to delete the shelter" do
       visit "/shelters/#{@shelter_1.id}"
 
       expect(page).to have_button('Delete Shelter')
     end
 
-    it "when I click the delete shelter link I should be redirected to the shelters index page" do
+    it "when I click the delete shelter button I should be redirected to the shelters index page" do
       visit "/shelters/#{@shelter_1.id}"
 
       click_button 'Delete Shelter'
@@ -56,6 +56,20 @@ RSpec.describe "As a visitor" do
       expect(current_path).to eq('/shelters')
       expect(page).to_not have_content(@shelter_1.name)
       expect(page).to_not have_button('Delete Shelter')
+    end
+
+    it "I can see a button to update the shelter" do
+      visit "/shelters/#{@shelter_1.id}"
+
+      expect(page).to have_button('Update Shelter')
+    end
+
+    it "when I click the update shelter button I should be taken to that shelters edit form page" do
+      visit "/shelters/#{@shelter_1.id}"
+
+      click_button 'Update Shelter'
+
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}/edit")
     end
   end
 end
