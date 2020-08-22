@@ -13,19 +13,18 @@ RSpec.describe 'Edit Shelter' do
         fill_in 'City', with: 'Aurora'
         fill_in 'State', with: 'Colorado'
         fill_in 'Zip', with: '83062'
-        
+
         click_on 'Update Shelter'
 
-        expect(current_path).to eq("/shelters")
+        expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+
         expect(page).to have_content('FurBabies4Life')
-
-        click_on 'FurBabies4Life'
-
         expect(page).to have_content('1500 Henry St')
         expect(page).to have_content('Aurora')
         expect(page).to have_content('Colorado')
         expect(page).to have_content('83062')
 
+        expect(page).to_not have_content('FurBabies4Ever')
         expect(page).to_not have_content('1664 Poplar St')
         expect(page).to_not have_content('Denver')
         expect(page).to_not have_content('CO')
