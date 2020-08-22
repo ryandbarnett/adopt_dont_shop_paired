@@ -8,13 +8,13 @@ require 'rails_helper'
 # - state
 # - zip
 
-RSpec.describe "As a visitor" do
+RSpec.describe "As a visitor when I visit the Shelters Index page" do
   before :each do
     @shelter_1 = Shelter.create!(name: 'FurBabies4Ever', address: '1664 Poplar St', city: 'Denver', state: 'CO', zip: 80220)
     @shelter_2 = Shelter.create!(name: 'PuppyLove', address: '1665 Poplar St', city: 'Fort Collins', state: 'CO', zip: 91442)
   end
 
-  it "can see all shelter names" do
+  it "I can see all the shelter names" do
     visit '/shelters'
 
     expect(page).to have_content(@shelter_1.name)
