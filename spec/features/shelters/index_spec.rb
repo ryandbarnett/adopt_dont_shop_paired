@@ -1,12 +1,4 @@
 require 'rails_helper'
-# As a visitor
-# When I visit '/shelters'
-# Then I see the name of each shelter in the system
-# - name
-# - address
-# - city
-# - state
-# - zip
 
 RSpec.describe "As a visitor" do
   describe 'when I visit the Shelters Index page' do
