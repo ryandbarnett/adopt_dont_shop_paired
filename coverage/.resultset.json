@@ -307,14 +307,6 @@
         "lines": [
           1,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           1,
           1,
           1,
@@ -462,14 +454,59 @@
           null
         ]
       },
-      "/Users/ryanbarnett/turing/2module/adopt_dont_shop/app/models/shelter.rb": {
+      "/Users/ryanbarnett/turing/2module/adopt_dont_shop/spec/models/pet_spec.rb": {
         "lines": [
           1,
+          null,
+          1,
+          1,
+          2,
+          null,
+          null,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
           null,
           null
         ]
       },
+      "/Users/ryanbarnett/turing/2module/adopt_dont_shop/app/models/pet.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
       "/Users/ryanbarnett/turing/2module/adopt_dont_shop/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/ryanbarnett/turing/2module/adopt_dont_shop/spec/models/shelter_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          null,
+          null,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/ryanbarnett/turing/2module/adopt_dont_shop/app/models/shelter.rb": {
         "lines": [
           1,
           1,
@@ -524,6 +561,6 @@
         ]
       }
     },
-    "timestamp": 1598120223
+    "timestamp": 1598129931
   }
 }
