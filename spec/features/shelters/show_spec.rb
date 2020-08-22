@@ -4,9 +4,9 @@ RSpec.describe "As a visitor" do
   describe 'When I visit a shelter show page' do
     before :each do
       @shelter_1 = Shelter.create!(name: 'FurBabies4Ever', address: '1664 Poplar St', city: 'Denver', state: 'CO', zip: 80220)
-      @shelter_2 = Shelter.create!(name: 'PuppyLove', address: '1665 Poplar St', city: 'Fort Collins', state: 'CO', zip: 91442)
+      @shelter_2 = Shelter.create!(name: 'PuppyLove', address: '16 Washington Blvd', city: 'Los Angeles', state: 'CA', zip: 91442)
     end
-    
+
     it "I can see the shelter name" do
       visit "/shelters/#{@shelter_1.id}"
 
@@ -40,6 +40,22 @@ RSpec.describe "As a visitor" do
 
       expect(page).to have_content(@shelter_1.zip)
       expect(page).to_not have_content(@shelter_2.zip)
+    end
+
+    it "I can see a link to delete the shelter" do
+      visit "/shelters/#{@shelter_1.id}"
+
+      expect(page).to have_link('Delete Shelter')
+    end
+
+    it "when I click the delete shelter link I should be redirected to the shelters index page" do
+      visit "/shelters/#{@shelter_1.id}"
+
+      click_button 'Delete Shelter'
+
+      expect(current_path).to eq('/shelters')
+      expect(page).to_not have_content(@shelter_1.name)
+      expect(page).to_not have_button('Delete Shelter')
     end
   end
 end
