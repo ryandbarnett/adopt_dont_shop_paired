@@ -1,2 +1,3 @@
 <h2><%= @shelter.name %></h2>
 <p>Address: <%= "#{@shelter.address}, #{@shelter.city}, #{@shelter.state}, #{@shelter.zip}" %></p>
+<%= button_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>
