@@ -58,6 +58,23 @@ RSpec.describe 'as a visitor' do
       end
     end
 
+    it "when I click a pet name I go to that pet's show page" do
+      visit '/pets'
+
+      expect(page).to have_link(@pet_1.name)
+      expect(page).to have_link(@pet_2.name)
+
+      click_link @pet_1.name
+
+      expect(current_path).to eq("/pets/#{@pet_1.id}")
+
+      visit '/pets'
+
+      click_link @pet_2.name
+
+      expect(current_path).to eq("/pets/#{@pet_2.id}")
+    end
+
     it 'I see the pets sex' do
       visit '/pets'
 
