@@ -14,7 +14,7 @@
       <img src="./assets/0.12.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-08-23T15:38:30-06:00">2020-08-23T15:38:30-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-08-23T15:48:37-06:00">2020-08-23T15:48:37-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.39
+         1.4
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>353</b> relevant lines,
-    <span class="green"><b>353</b> lines covered</span> and
+    <b>361</b> relevant lines,
+    <span class="green"><b>361</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -110,7 +110,7 @@
             <td class="cell--number">20</td>
             <td class="cell--number">20</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.00</td>
+            <td class="cell--number">2.25</td>
             
           </tr>
         
@@ -370,11 +370,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#94fbf005f0f54e8e889cea05cf3162c96a8ec055" class="src_link" title="spec/features/shelters/index_spec.rb">spec/features/shelters/index_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">57</td>
-            <td class="cell--number">30</td>
-            <td class="cell--number">30</td>
+            <td class="cell--number">72</td>
+            <td class="cell--number">38</td>
+            <td class="cell--number">38</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.33</td>
+            <td class="cell--number">1.37</td>
             
           </tr>
         
@@ -1131,8 +1131,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="3">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="11" data-linenumber="3">
+            <span class="hits">11</span>
             
 
             
@@ -1318,8 +1318,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="20">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="20">
+            <span class="hits">2</span>
             
 
             
@@ -1329,8 +1329,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="21">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="21">
+            <span class="hits">2</span>
             
 
             
@@ -7758,8 +7758,8 @@
     
 
     <div class="t-line-summary">
-      <b>30</b> relevant lines.
-      <span class="green"><b>30</b> lines covered</span> and
+      <b>38</b> relevant lines.
+      <span class="green"><b>38</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -7826,8 +7826,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="6">
-            <span class="hits">6</span>
+          <li class="covered" data-hits="8" data-linenumber="6">
+            <span class="hits">8</span>
             
 
             
@@ -7837,8 +7837,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="7">
-            <span class="hits">6</span>
+          <li class="covered" data-hits="8" data-linenumber="7">
+            <span class="hits">8</span>
             
 
             
@@ -8239,7 +8239,7 @@
 
             
 
-            <code class="ruby">    it &quot;I can see a &#39;New Shelter&#39; link&quot; do</code>
+            <code class="ruby">    it &quot;I can see delete shelter links&quot; do</code>
           </li>
         </div>
       
@@ -8272,7 +8272,7 @@
 
             
 
-            <code class="ruby">      expect(page).to have_link(&quot;New Shelter&quot;)</code>
+            <code class="ruby">      expect(page).to have_link(&quot;Delete Shelter&quot;, count: 2)</code>
           </li>
         </div>
       
@@ -8305,7 +8305,7 @@
 
             
 
-            <code class="ruby">    it &quot;when I click the &#39;New Shelter&#39; link I am taken to the new shelter form page&quot; do</code>
+            <code class="ruby">    it &quot;when I click on a delete shelter link I go to the shelter index page and the deleted shelter is gone&quot; do</code>
           </li>
         </div>
       
@@ -8338,7 +8338,7 @@
 
             
 
-            <code class="ruby">      click_link &quot;New Shelter&quot;</code>
+            <code class="ruby">      click_link(&#39;Delete Shelter&#39;, match: :first)</code>
           </li>
         </div>
       
@@ -8360,18 +8360,18 @@
 
             
 
-            <code class="ruby">      expect(current_path).to eq(&quot;/shelters/new&quot;)</code>
+            <code class="ruby">      expect(current_path).to eq(&quot;/shelters&quot;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="55">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="55">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      expect(page).to_not have_content(@shelter_1.name)</code>
           </li>
         </div>
       
@@ -8382,12 +8382,177 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="57">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="58">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;I can see a &#39;New Shelter&#39; link&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="59">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      visit &#39;/shelters&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="60">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="61">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(page).to have_link(&quot;New Shelter&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="62">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="63">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="64">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;when I click the &#39;New Shelter&#39; link I am taken to the new shelter form page&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="65">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      visit &#39;/shelters&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="66">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="67">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      click_link &quot;New Shelter&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="68">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="69">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(current_path).to eq(&quot;/shelters/new&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="70">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="71">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="72">
             
             
 
