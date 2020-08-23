@@ -17,6 +17,10 @@ class PetsController < ApplicationController
     redirect_to "/shelters/#{pet_params[:shelter_id]}/pets"
   end
 
+  def show
+    @pet = Pet.find(params[:id])
+  end
+
   private
   def pet_params
     pet_params = params.permit(:name, :age, :sex, :image, :description, :id)
