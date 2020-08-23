@@ -17,30 +17,33 @@ RSpec.describe "as a visitor" do
         state: 'CO',
         zip: '91442'
       )
-      @pet_1 = Pet.create(
+      @pet_1 = Pet.create!(
         name: 'Rufus',
         sex: 'male',
         age: '3',
         image: 'https://www.washingtonpost.com/resizer/uwlkeOwC_3JqSUXeH8ZP81cHx3I=/arc-anglerfish-washpost-prod-washpost/public/HB4AT3D3IMI6TMPTWIZ74WAR54.jpg',
         shelter_id: @shelter_1.id,
+        description: 'The cutest dog in the world. Adopt him now!'
       )
-      @pet_2 = Pet.create(
+      @pet_2 = Pet.create!(
         name: 'Snuggles',
         sex: 'female',
         age: '5',
         image: 'https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg',
         shelter_id: @shelter_2.id,
+        description: 'A lovable orange cat. Adopt her now!'
       )
     end
 
     it "I see the pets images" do
       visit "/pets"
 
+      page.has_css?("#pet-#{@pet_1.id}")
       within "#pet-#{@pet_1.id}" do
-        page.should have_css('img', text: @pet_1.image)
+        page.should have_css("img[src='#{@pet_1.image}']")
       end
       within "#pet-#{@pet_2.id}" do
-        page.should have_css('img', text: @pet_2.image)
+        page.should have_css("img[src='#{@pet_2.image}']")
       end
     end
 
@@ -81,10 +84,10 @@ RSpec.describe "as a visitor" do
       visit "/pets"
 
       within "#pet-#{@pet_1.id}" do
-        expect(page).to have_content(@shelter_1.name)
+        expect(page).to have_content(@pet_1.name)
       end
       within "#pet-#{@pet_2.id}" do
-        expect(page).to have_content(@shelter_2.name)
+        expect(page).to have_content(@pet_2.name)
       end
     end
   end
