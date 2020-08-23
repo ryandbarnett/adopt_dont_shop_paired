@@ -14,6 +14,7 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content(@shelter_2.name)
     end
 
+
     it "when I click a shelter name I go to that shelter's show page" do
       visit '/shelters'
 
@@ -23,6 +24,20 @@ RSpec.describe "As a visitor" do
       click_link @shelter_1.name
 
       expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+    end
+
+    it "I can see edit shelter links" do
+      visit '/shelters'
+
+      expect(page).to have_link("Edit Shelter", count: 2)
+    end
+
+    it "when I click on an edit link I go to that shelters edit page" do
+      visit '/shelters'
+
+      click_link('Edit Shelter', match: :first)
+
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}/edit")
     end
 
     it "I can see a 'New Shelter' link" do
