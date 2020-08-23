@@ -71,7 +71,7 @@ RSpec.describe 'As a visitor' do
       expect(page).to_not have_css("img[src='#{@pet_2.image}']")
     end
 
-    it 'I can see a link to delete a pet' do
+    it 'I can see a link to delete the pet' do
       visit "/pets/#{@pet_1.id}"
 
       expect(page).to have_link('Delete Pet')
@@ -84,6 +84,20 @@ RSpec.describe 'As a visitor' do
 
       expect(current_path).to eq('/pets')
       expect(page).to_not have_content(@pet_1.name)
+    end
+
+    it 'I can see a link to update the pet' do
+      visit "/pets/#{@pet_1.id}"
+
+      expect(page).to have_link('Update Pet')
+    end
+
+    it 'when I click the update pet link I should be redirected to the edit pet form page' do
+      visit "/pets/#{@pet_1.id}"
+
+      click_link 'Update Pet'
+
+      expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
     end
   end
 end
