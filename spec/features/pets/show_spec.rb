@@ -57,11 +57,9 @@ RSpec.describe 'As a visitor' do
     end
 
     it 'I can see the pet adoptable status' do
-      skip
       visit "/pets/#{@pet_1.id}"
 
-      expect(page).to have_content(@pet_1.adoptable)
-      expect(page).to_not have_content(@pet_2.adoptable)
+      expect(page).to have_content("Adoptable: #{@pet_1.adoptable}")
     end
 
     it 'I can see the pet image' do
