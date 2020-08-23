@@ -14,7 +14,7 @@
       <img src="./assets/0.12.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-08-23T15:48:37-06:00">2020-08-23T15:48:37-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-08-23T16:03:15-06:00">2020-08-23T16:03:15-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.4
+         1.42
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>361</b> relevant lines,
-    <span class="green"><b>361</b> lines covered</span> and
+    <b>368</b> relevant lines,
+    <span class="green"><b>368</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -88,7 +88,7 @@
             <td class="cell--number">23</td>
             <td class="cell--number">23</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.61</td>
+            <td class="cell--number">1.70</td>
             
           </tr>
         
@@ -326,11 +326,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#c2079a6375944491e65dd7a79d19b81ed832c6e7" class="src_link" title="spec/features/pets/index_spec.rb">spec/features/pets/index_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">122</td>
-            <td class="cell--number">54</td>
-            <td class="cell--number">54</td>
+            <td class="cell--number">136</td>
+            <td class="cell--number">61</td>
+            <td class="cell--number">61</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.52</td>
+            <td class="cell--number">1.59</td>
             
           </tr>
         
@@ -541,8 +541,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="3">
-            <span class="hits">6</span>
+          <li class="covered" data-hits="8" data-linenumber="3">
+            <span class="hits">8</span>
             
 
             
@@ -4565,8 +4565,8 @@
     
 
     <div class="t-line-summary">
-      <b>54</b> relevant lines.
-      <span class="green"><b>54</b> lines covered</span> and
+      <b>61</b> relevant lines.
+      <span class="green"><b>61</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -4633,8 +4633,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="6">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="10" data-linenumber="6">
+            <span class="hits">10</span>
             
 
             
@@ -4710,8 +4710,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="13">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="10" data-linenumber="13">
+            <span class="hits">10</span>
             
 
             
@@ -4787,8 +4787,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="20">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="10" data-linenumber="20">
+            <span class="hits">10</span>
             
 
             
@@ -4875,8 +4875,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="28">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="10" data-linenumber="28">
+            <span class="hits">10</span>
             
 
             
@@ -5607,7 +5607,7 @@
 
             
 
-            <code class="ruby">    describe &#39;for a specific shelter&#39; do</code>
+            <code class="ruby">    it &quot;I can see edit pet links&quot; do</code>
           </li>
         </div>
       
@@ -5618,23 +5618,12 @@
 
             
 
-            <code class="ruby">      it &#39;I should only see pets for that shelter&#39; do</code>
+            <code class="ruby">      visit &#39;/pets&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="96">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        visit &quot;/shelters/#{@shelter_1.id}/pets&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="97">
+          <li class="never" data-hits="" data-linenumber="96">
             
             
 
@@ -5645,35 +5634,46 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="98">
+          <li class="covered" data-hits="1" data-linenumber="97">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        expect(page).to have_content(@pet_1.name)</code>
+            <code class="ruby">      expect(page).to have_link(&quot;Edit Pet&quot;, count: 2)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="99">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="98">
+            
             
 
             
 
-            <code class="ruby">        expect(page).to_not have_content(@pet_2.name)</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="100">
+          <li class="never" data-hits="" data-linenumber="99">
             
             
 
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="100">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;when I click on an edit link I go to that pets edit page&quot; do</code>
           </li>
         </div>
       
@@ -5684,7 +5684,7 @@
 
             
 
-            <code class="ruby">        visit &quot;/shelters/#{@shelter_2.id}/pets&quot;</code>
+            <code class="ruby">      visit &#39;/pets&#39;</code>
           </li>
         </div>
       
@@ -5706,29 +5706,29 @@
 
             
 
-            <code class="ruby">        expect(page).to have_content(@pet_2.name)</code>
+            <code class="ruby">      click_link(&#39;Edit Pet&#39;, match: :first)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="104">
+          <li class="never" data-hits="" data-linenumber="104">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="105">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        expect(page).to_not have_content(@pet_1.name)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="105">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
+            <code class="ruby">      expect(current_path).to eq(&quot;/pets/#{@pet_1.id}/edit&quot;)</code>
           </li>
         </div>
       
@@ -5739,18 +5739,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="107">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="107">
+            
             
 
             
 
-            <code class="ruby">      it &#39;I should see a create pet button&#39; do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -5761,18 +5761,18 @@
 
             
 
-            <code class="ruby">        visit &quot;/shelters/#{@shelter_1.id}/pets&quot;</code>
+            <code class="ruby">    describe &#39;for a specific shelter&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="109">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="109">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">      it &#39;I should only see pets for that shelter&#39; do</code>
           </li>
         </div>
       
@@ -5783,7 +5783,7 @@
 
             
 
-            <code class="ruby">        expect(page).to have_button(&#39;Create Pet&#39;)</code>
+            <code class="ruby">        visit &quot;/shelters/#{@shelter_1.id}/pets&quot;</code>
           </li>
         </div>
       
@@ -5794,18 +5794,18 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="112">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="112">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">        expect(page).to have_content(@pet_1.name)</code>
           </li>
         </div>
       
@@ -5816,23 +5816,12 @@
 
             
 
-            <code class="ruby">      it &#39;when I click the create pet button I am taken to the new shelter form page&#39; do</code>
+            <code class="ruby">        expect(page).to_not have_content(@pet_2.name)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="114">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        visit &quot;/shelters/#{@shelter_1.id}/pets&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="115">
+          <li class="never" data-hits="" data-linenumber="114">
             
             
 
@@ -5843,24 +5832,35 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="116">
+          <li class="covered" data-hits="1" data-linenumber="115">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        click_button &#39;Create Pet&#39;</code>
+            <code class="ruby">        visit &quot;/shelters/#{@shelter_2.id}/pets&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="117">
+          <li class="never" data-hits="" data-linenumber="116">
             
             
 
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="117">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        expect(page).to have_content(@pet_2.name)</code>
           </li>
         </div>
       
@@ -5871,7 +5871,7 @@
 
             
 
-            <code class="ruby">        expect(current_path).to eq(&quot;/shelters/#{@shelter_1.id}/pets/new&quot;)</code>
+            <code class="ruby">        expect(page).to_not have_content(@pet_1.name)</code>
           </li>
         </div>
       
@@ -5893,12 +5893,166 @@
 
             
 
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="121">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      it &#39;I should see a create pet button&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="122">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        visit &quot;/shelters/#{@shelter_1.id}/pets&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="123">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="124">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        expect(page).to have_button(&#39;Create Pet&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="125">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="126">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="127">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      it &#39;when I click the create pet button I am taken to the new shelter form page&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="128">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        visit &quot;/shelters/#{@shelter_1.id}/pets&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="129">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="130">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        click_button &#39;Create Pet&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="131">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="132">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        expect(current_path).to eq(&quot;/shelters/#{@shelter_1.id}/pets/new&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="133">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="134">
+            
+            
+
+            
+
             <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="121">
+          <li class="never" data-hits="" data-linenumber="135">
             
             
 
@@ -5909,7 +6063,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="122">
+          <li class="never" data-hits="" data-linenumber="136">
             
             
 
