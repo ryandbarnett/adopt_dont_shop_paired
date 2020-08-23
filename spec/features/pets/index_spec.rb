@@ -150,16 +150,16 @@ RSpec.describe 'as a visitor' do
         expect(page).to_not have_content(@pet_1.name)
       end
 
-      it 'I should see a create pet button' do
+      it 'I should see a create pet link' do
         visit "/shelters/#{@shelter_1.id}/pets"
 
-        expect(page).to have_button('Create Pet')
+        expect(page).to have_link('Create Pet')
       end
 
-      it 'when I click the create pet button I am taken to the new shelter form page' do
+      it 'when I click the create pet link I am taken to the new pet form page' do
         visit "/shelters/#{@shelter_1.id}/pets"
 
-        click_button 'Create Pet'
+        click_link 'Create Pet'
 
         expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets/new")
       end
