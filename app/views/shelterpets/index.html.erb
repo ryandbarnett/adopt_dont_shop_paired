@@ -9,4 +9,4 @@
     <%= link_to "Delete Pet", "/pets/#{pet.id}", method: :delete %>
   </article>
 <% end %>
-<p><%= button_to 'Create Pet', "/shelters/#{@shelter.id}/pets/new", method: :get %></p>
+<p><%= link_to 'Create Pet', "/shelters/#{@shelter.id}/pets/new", method: :get %></p>

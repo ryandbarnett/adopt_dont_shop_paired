@@ -14,7 +14,7 @@
       <img src="./assets/0.12.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-08-23T16:16:26-06:00">2020-08-23T16:16:26-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-08-23T16:48:14-06:00">2020-08-23T16:48:14-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>385</b> relevant lines,
-    <span class="green"><b>385</b> lines covered</span> and
+    <b>384</b> relevant lines,
+    <span class="green"><b>384</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -315,7 +315,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#ff633b687ee9e31bf6aaf09cc2c92a2c8c670f3c" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">20</td>
+            <td class="cell--number">21</td>
             <td class="cell--number">17</td>
             <td class="cell--number">17</td>
             <td class="cell--number">0</td>
@@ -392,11 +392,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#eda16842a7f4addafff1bddee676a7a31a401571" class="src_link" title="spec/features/shelters/show_spec.rb">spec/features/shelters/show_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">75</td>
-            <td class="cell--number">42</td>
-            <td class="cell--number">42</td>
+            <td class="cell--number">74</td>
+            <td class="cell--number">41</td>
+            <td class="cell--number">41</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.38</td>
+            <td class="cell--number">1.39</td>
             
           </tr>
         
@@ -4366,7 +4366,7 @@
 
             
 
-            <code class="ruby">  get &#39;/shelters&#39;, to: &#39;shelters#index&#39;</code>
+            <code class="ruby">  get &#39;/shelters&#39;,              to: &#39;shelters#index&#39;</code>
           </li>
         </div>
       
@@ -4377,7 +4377,7 @@
 
             
 
-            <code class="ruby">  get &#39;/shelters/new&#39;, to: &#39;shelters#new&#39;</code>
+            <code class="ruby">  get &#39;/shelters/new&#39;,          to: &#39;shelters#new&#39;</code>
           </li>
         </div>
       
@@ -4388,7 +4388,7 @@
 
             
 
-            <code class="ruby">  get &#39;/shelters/:id&#39;, to: &#39;shelters#show&#39;</code>
+            <code class="ruby">  get &#39;/shelters/:id&#39;,          to: &#39;shelters#show&#39;</code>
           </li>
         </div>
       
@@ -4399,7 +4399,7 @@
 
             
 
-            <code class="ruby">  post &#39;/shelters&#39;, to: &#39;shelters#create&#39;</code>
+            <code class="ruby">  post &#39;/shelters&#39;,             to: &#39;shelters#create&#39;</code>
           </li>
         </div>
       
@@ -4410,7 +4410,7 @@
 
             
 
-            <code class="ruby">  delete &#39;shelters/:id&#39;, to: &#39;shelters#destroy&#39;</code>
+            <code class="ruby">  delete &#39;shelters/:id&#39;,        to: &#39;shelters#destroy&#39;</code>
           </li>
         </div>
       
@@ -4421,7 +4421,7 @@
 
             
 
-            <code class="ruby">  get &#39;/shelters/:id/edit&#39;, to: &#39;shelters#edit&#39;</code>
+            <code class="ruby">  get &#39;/shelters/:id/edit&#39;,     to: &#39;shelters#edit&#39;</code>
           </li>
         </div>
       
@@ -4432,18 +4432,18 @@
 
             
 
-            <code class="ruby">  patch &#39;shelters/:id&#39;, to: &#39;shelters#update&#39;</code>
+            <code class="ruby">  patch &#39;shelters/:id&#39;,         to: &#39;shelters#update&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="11">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="11">
+            
             
 
             
 
-            <code class="ruby">  get &#39;/shelters/:id/pets&#39;, to: &#39;shelterpets#index&#39;</code>
+            <code class="ruby">  </code>
           </li>
         </div>
       
@@ -4454,23 +4454,12 @@
 
             
 
-            <code class="ruby">  get &#39;/shelters/:id/pets/new&#39;, to: &#39;pets#new&#39;</code>
+            <code class="ruby">  get &#39;/shelters/:id/pets&#39;,     to: &#39;shelterpets#index&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="13">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  post &#39;/shelters/:id/pets&#39;, to: &#39;pets#create&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="14">
+          <li class="never" data-hits="" data-linenumber="13">
             
             
 
@@ -4481,13 +4470,24 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="1" data-linenumber="14">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  get &#39;/pets&#39;,                  to: &#39;pets#index&#39;</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="covered" data-hits="1" data-linenumber="15">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  get &#39;/pets&#39;, to: &#39;pets#index&#39;</code>
+            <code class="ruby">  get &#39;/shelters/:id/pets/new&#39;, to: &#39;pets#new&#39;</code>
           </li>
         </div>
       
@@ -4498,7 +4498,7 @@
 
             
 
-            <code class="ruby">  get &#39;/pets/:id&#39;, to: &#39;pets#show&#39;</code>
+            <code class="ruby">  get &#39;/pets/:id&#39;,              to: &#39;pets#show&#39;</code>
           </li>
         </div>
       
@@ -4509,7 +4509,7 @@
 
             
 
-            <code class="ruby">  delete &#39;/pets/:id&#39;, to: &#39;pets#destroy&#39;</code>
+            <code class="ruby">  post &#39;/shelters/:id/pets&#39;,    to: &#39;pets#create&#39;</code>
           </li>
         </div>
       
@@ -4520,7 +4520,7 @@
 
             
 
-            <code class="ruby">  get &#39;/pets/:id/edit&#39;, to: &#39;pets#edit&#39;</code>
+            <code class="ruby">  delete &#39;/pets/:id&#39;,           to: &#39;pets#destroy&#39;</code>
           </li>
         </div>
       
@@ -4531,12 +4531,23 @@
 
             
 
-            <code class="ruby">  patch &#39;pets/:id&#39;, to: &#39;pets#update&#39;</code>
+            <code class="ruby">  get &#39;/pets/:id/edit&#39;,         to: &#39;pets#edit&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="20">
+          <li class="covered" data-hits="1" data-linenumber="20">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  patch &#39;pets/:id&#39;,             to: &#39;pets#update&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="21">
             
             
 
@@ -6256,7 +6267,7 @@
 
             
 
-            <code class="ruby">      it &#39;I should see a create pet button&#39; do</code>
+            <code class="ruby">      it &#39;I should see a create pet link&#39; do</code>
           </li>
         </div>
       
@@ -6289,7 +6300,7 @@
 
             
 
-            <code class="ruby">        expect(page).to have_button(&#39;Create Pet&#39;)</code>
+            <code class="ruby">        expect(page).to have_link(&#39;Create Pet&#39;)</code>
           </li>
         </div>
       
@@ -6322,7 +6333,7 @@
 
             
 
-            <code class="ruby">      it &#39;when I click the create pet button I am taken to the new shelter form page&#39; do</code>
+            <code class="ruby">      it &#39;when I click the create pet link I am taken to the new pet form page&#39; do</code>
           </li>
         </div>
       
@@ -6355,7 +6366,7 @@
 
             
 
-            <code class="ruby">        click_button &#39;Create Pet&#39;</code>
+            <code class="ruby">        click_link &#39;Create Pet&#39;</code>
           </li>
         </div>
       
@@ -9360,8 +9371,8 @@
     
 
     <div class="t-line-summary">
-      <b>42</b> relevant lines.
-      <span class="green"><b>42</b> lines covered</span> and
+      <b>41</b> relevant lines.
+      <span class="green"><b>41</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -9863,7 +9874,7 @@
 
             
 
-            <code class="ruby">    it &#39;I can see a button to delete the shelter&#39; do</code>
+            <code class="ruby">    it &#39;I can see a link to delete the shelter&#39; do</code>
           </li>
         </div>
       
@@ -9896,7 +9907,7 @@
 
             
 
-            <code class="ruby">      expect(page).to have_button(&#39;Delete Shelter&#39;)</code>
+            <code class="ruby">      expect(page).to have_link(&#39;Delete Shelter&#39;)</code>
           </li>
         </div>
       
@@ -9929,7 +9940,7 @@
 
             
 
-            <code class="ruby">    it &#39;when I click the delete shelter button I should be redirected to the shelters index page&#39; do</code>
+            <code class="ruby">    it &#39;when I click the delete shelter link I should be redirected to the shelters index page&#39; do</code>
           </li>
         </div>
       
@@ -9962,7 +9973,7 @@
 
             
 
-            <code class="ruby">      click_button &#39;Delete Shelter&#39;</code>
+            <code class="ruby">      click_link &#39;Delete Shelter&#39;</code>
           </li>
         </div>
       
@@ -10000,13 +10011,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="58">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="58">
+            
             
 
             
 
-            <code class="ruby">      expect(page).to_not have_button(&#39;Delete Shelter&#39;)</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -10017,18 +10028,18 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="60">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="60">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">    it &#39;I can see a link to update the shelter&#39; do</code>
           </li>
         </div>
       
@@ -10039,23 +10050,12 @@
 
             
 
-            <code class="ruby">    it &#39;I can see a button to update the shelter&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="62">
-            <span class="hits">1</span>
-            
-
-            
-
             <code class="ruby">      visit &quot;/shelters/#{@shelter_1.id}&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="63">
+          <li class="never" data-hits="" data-linenumber="62">
             
             
 
@@ -10066,13 +10066,24 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="64">
+          <li class="covered" data-hits="1" data-linenumber="63">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      expect(page).to have_button(&#39;Update Shelter&#39;)</code>
+            <code class="ruby">      expect(page).to have_link(&#39;Update Shelter&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="64">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -10083,18 +10094,18 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="66">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="66">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">    it &#39;when I click the update shelter link I should be taken to that shelters edit form page&#39; do</code>
           </li>
         </div>
       
@@ -10105,23 +10116,12 @@
 
             
 
-            <code class="ruby">    it &#39;when I click the update shelter button I should be taken to that shelters edit form page&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="68">
-            <span class="hits">1</span>
-            
-
-            
-
             <code class="ruby">      visit &quot;/shelters/#{@shelter_1.id}&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="69">
+          <li class="never" data-hits="" data-linenumber="68">
             
             
 
@@ -10132,18 +10132,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="70">
+          <li class="covered" data-hits="1" data-linenumber="69">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      click_button &#39;Update Shelter&#39;</code>
+            <code class="ruby">      click_link &#39;Update Shelter&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="71">
+          <li class="never" data-hits="" data-linenumber="70">
             
             
 
@@ -10154,7 +10154,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="72">
+          <li class="covered" data-hits="1" data-linenumber="71">
             <span class="hits">1</span>
             
 
@@ -10165,7 +10165,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="73">
+          <li class="never" data-hits="" data-linenumber="72">
             
             
 
@@ -10176,7 +10176,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="74">
+          <li class="never" data-hits="" data-linenumber="73">
             
             
 
@@ -10187,7 +10187,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="75">
+          <li class="never" data-hits="" data-linenumber="74">
             
             
 
