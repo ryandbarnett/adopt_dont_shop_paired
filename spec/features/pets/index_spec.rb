@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "as a visitor" do
-  describe "when I visit the pets index page" do
+RSpec.describe 'as a visitor' do
+  describe 'when I visit the pets index page' do
     before :each do
       @shelter_1 = Shelter.create(
         name: 'FurBabies4Ever',
@@ -35,8 +35,8 @@ RSpec.describe "as a visitor" do
       )
     end
 
-    it "I see the pets images" do
-      visit "/pets"
+    it 'I see the pets images' do
+      visit '/pets'
 
       page.has_css?("#pet-#{@pet_1.id}")
       within "#pet-#{@pet_1.id}" do
@@ -47,8 +47,8 @@ RSpec.describe "as a visitor" do
       end
     end
 
-    it "I see the pets names" do
-      visit "/pets"
+    it 'I see the pets names' do
+      visit '/pets'
 
       within "#pet-#{@pet_1.id}" do
         expect(page).to have_content(@pet_1.name)
@@ -58,8 +58,8 @@ RSpec.describe "as a visitor" do
       end
     end
 
-    it "I see the pets sex" do
-      visit "/pets"
+    it 'I see the pets sex' do
+      visit '/pets'
 
       within "#pet-#{@pet_1.id}" do
         expect(page).to have_content(@pet_1.sex)
@@ -69,8 +69,8 @@ RSpec.describe "as a visitor" do
       end
     end
 
-    it "I see the pets age" do
-      visit "/pets"
+    it 'I see the pets age' do
+      visit '/pets'
 
       within "#pet-#{@pet_1.id}" do
         expect(page).to have_content(@pet_1.age)
@@ -80,14 +80,28 @@ RSpec.describe "as a visitor" do
       end
     end
 
-    it "I see the shelter name where the pet is currently located" do
-      visit "/pets"
+    it 'I see the shelter name where the pet is currently located' do
+      visit '/pets'
 
       within "#pet-#{@pet_1.id}" do
         expect(page).to have_content(@pet_1.name)
       end
       within "#pet-#{@pet_2.id}" do
         expect(page).to have_content(@pet_2.name)
+      end
+    end
+
+    describe 'for a specific shelter' do
+      it 'I should only see pets for that shelter' do
+        visit "/shelters/#{@shelter_1.id}/pets"
+
+        expect(page).to have_content(@pet_1.name)
+        expect(page).to_not have_content(@pet_2.name)
+
+        visit "/shelters/#{@shelter_2.id}/pets"
+
+        expect(page).to have_content(@pet_2.name)
+        expect(page).to_not have_content(@pet_1.name)
       end
     end
   end
