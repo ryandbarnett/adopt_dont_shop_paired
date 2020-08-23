@@ -1,9 +1,11 @@
-<h1>All Shelters<h1>
+<header><h2 class='page-title'>All Shelters</h2></header>
+<section class='cards-container'>
 <% @shelters.each do |shelter| %>
-  <p>
+  <article id="shelter-<%= shelter.id %>" class='shelter card'>
     <%= link_to "#{shelter.name}", "/shelters/#{shelter.id}" %>
-    <%= link_to "Edit Shelter", "/shelters/#{shelter.id}/edit" %>
-    <%= link_to "Delete Shelter", "/shelters/#{shelter.id}", method: :delete %>
-  </p>
+    <%= link_to 'Edit Shelter', "/shelters/#{shelter.id}/edit" %>
+    <%= link_to 'Delete Shelter', "/shelters/#{shelter.id}", method: :delete %>
+  </article>
 <% end %>
+</section>
 <%= link_to 'New Shelter', '/shelters/new' %>
