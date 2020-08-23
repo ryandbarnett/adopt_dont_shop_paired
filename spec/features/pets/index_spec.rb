@@ -40,10 +40,10 @@ RSpec.describe 'as a visitor' do
 
       page.has_css?("#pet-#{@pet_1.id}")
       within "#pet-#{@pet_1.id}" do
-        page.should have_css("img[src='#{@pet_1.image}']")
+        expect(page).to have_css("img[src='#{@pet_1.image}']")
       end
       within "#pet-#{@pet_2.id}" do
-        page.should have_css("img[src='#{@pet_2.image}']")
+        expect(page).to have_css("img[src='#{@pet_2.image}']")
       end
     end
 
@@ -102,6 +102,20 @@ RSpec.describe 'as a visitor' do
 
         expect(page).to have_content(@pet_2.name)
         expect(page).to_not have_content(@pet_1.name)
+      end
+
+      it 'I should see a create pet button' do
+        visit "/shelters/#{@shelter_1.id}/pets"
+
+        expect(page).to have_button('Create Pet')
+      end
+
+      it 'when I click the create pet button I am taken to the new shelter form page' do
+        visit "/shelters/#{@shelter_1.id}/pets"
+
+        click_button 'Create Pet'
+
+        expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets/new")
       end
     end
   end
