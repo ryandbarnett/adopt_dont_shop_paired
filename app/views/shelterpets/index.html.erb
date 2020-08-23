@@ -1,12 +1,14 @@
-<h1><%= @shelter.name %> Pets<h1>
-<% @shelter.pets.each do |pet| %>
-  <article class='pet' id="pet-<%= pet.id %>" >
-    <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
-    <img src=<%= pet.image %> />
-    <p>Age: <%= pet.age %></p>
-    <p>Sex: <%= pet.sex %></p>
-    <%= link_to "Edit Pet", "/pets/#{pet.id}/edit" %>
-    <%= link_to "Delete Pet", "/pets/#{pet.id}", method: :delete %>
-  </article>
-<% end %>
+<header><h2><%= @shelter.name %> Pets</h2></header>
+<section class='cards-container'>
+  <% @shelter.pets.each do |pet| %>
+    <article id="pet-<%= pet.id %>" class='pet card'>
+      <p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
+      <img src=<%= pet.image %> />
+      <p>Age: <%= pet.age %></p>
+      <p>Sex: <%= pet.sex %></p>
+      <%= link_to "Edit Pet", "/pets/#{pet.id}/edit" %>
+      <%= link_to "Delete Pet", "/pets/#{pet.id}", method: :delete %>
+    </article>
+  <% end %>
+</section>
 <p><%= link_to 'Create Pet', "/shelters/#{@shelter.id}/pets/new", method: :get %></p>
