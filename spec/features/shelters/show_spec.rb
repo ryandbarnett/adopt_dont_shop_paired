@@ -70,5 +70,19 @@ RSpec.describe 'As a visitor' do
 
       expect(current_path).to eq("/shelters/#{@shelter_1.id}/edit")
     end
+
+    it 'I can see a link to go see all the shelters pets' do
+      visit "/shelters/#{@shelter_1.id}"
+
+      expect(page).to have_link('Shelter Pets')
+    end
+
+    it 'when I click the update shelter link I should be taken to that shelters edit form page' do
+      visit "/shelters/#{@shelter_1.id}"
+
+      click_link 'Shelter Pets'
+
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets")
+    end
   end
 end
