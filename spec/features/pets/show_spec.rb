@@ -70,5 +70,20 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_css("img[src='#{@pet_1.image}']")
       expect(page).to_not have_css("img[src='#{@pet_2.image}']")
     end
+
+    it 'I can see a link to delete a pet' do
+      visit "/pets/#{@pet_1.id}"
+
+      expect(page).to have_link('Delete Pet')
+    end
+
+    it 'when I click the delete pet link I should be redirected to the pets index page' do
+      visit "/pets/#{@pet_1.id}"
+
+      click_link 'Delete Pet'
+
+      expect(current_path).to eq('/pets')
+      expect(page).to_not have_content(@pet_1.name)
+    end
   end
 end
