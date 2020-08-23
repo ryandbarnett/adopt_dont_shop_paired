@@ -14,7 +14,7 @@
       <img src="./assets/0.12.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-08-22T18:56:52-06:00">2020-08-22T18:56:52-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-08-22T19:52:36-06:00">2020-08-22T19:52:36-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.27
+         1.32
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>207</b> relevant lines,
-    <span class="green"><b>207</b> lines covered</span> and
+    <b>210</b> relevant lines,
+    <span class="green"><b>210</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -84,11 +84,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#b0ad3710d652c693d0c9f011ced7a809930bc828" class="src_link" title="app/controllers/pets_controller.rb">app/controllers/pets_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">9</td>
             <td class="cell--number">5</td>
-            <td class="cell--number">3</td>
-            <td class="cell--number">3</td>
+            <td class="cell--number">5</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.33</td>
+            <td class="cell--number">4.00</td>
             
           </tr>
         
@@ -304,9 +304,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#ff633b687ee9e31bf6aaf09cc2c92a2c8c670f3c" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">12</td>
-            <td class="cell--number">10</td>
-            <td class="cell--number">10</td>
+            <td class="cell--number">15</td>
+            <td class="cell--number">11</td>
+            <td class="cell--number">11</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -462,8 +462,8 @@
     
 
     <div class="t-line-summary">
-      <b>3</b> relevant lines.
-      <span class="green"><b>3</b> lines covered</span> and
+      <b>5</b> relevant lines.
+      <span class="green"><b>5</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -497,18 +497,62 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="3">
+          <li class="covered" data-hits="7" data-linenumber="3">
+            <span class="hits">7</span>
+            
+
+            
+
+            <code class="ruby">    if params[:id]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="4">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">      @pets = Pet.select { |pet| pet.shelter_id == params[:id].to_i }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="5">
+            
+            
+
+            
+
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="6">
             <span class="hits">5</span>
             
 
             
 
-            <code class="ruby">    @pets = Pet.all</code>
+            <code class="ruby">      @pets = Pet.all</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="4">
+          <li class="never" data-hits="" data-linenumber="7">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="8">
             
             
 
@@ -519,7 +563,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="5">
+          <li class="never" data-hits="" data-linenumber="9">
             
             
 
@@ -3766,8 +3810,8 @@
     
 
     <div class="t-line-summary">
-      <b>10</b> relevant lines.
-      <span class="green"><b>10</b> lines covered</span> and
+      <b>11</b> relevant lines.
+      <span class="green"><b>11</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -3801,13 +3845,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="3">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="3">
+            
             
 
             
 
-            <code class="ruby">  get &#39;/shelters&#39;, to: &#39;shelters#index&#39;</code>
+            <code class="ruby">  </code>
           </li>
         </div>
       
@@ -3818,7 +3862,7 @@
 
             
 
-            <code class="ruby">  get &#39;/shelters/new&#39;, to: &#39;shelters#new&#39;</code>
+            <code class="ruby">  get &#39;/shelters&#39;, to: &#39;shelters#index&#39;</code>
           </li>
         </div>
       
@@ -3829,7 +3873,7 @@
 
             
 
-            <code class="ruby">  get &#39;/shelters/:id&#39;, to: &#39;shelters#show&#39;</code>
+            <code class="ruby">  get &#39;/shelters/new&#39;, to: &#39;shelters#new&#39;</code>
           </li>
         </div>
       
@@ -3840,7 +3884,7 @@
 
             
 
-            <code class="ruby">  post &#39;/shelters&#39;, to: &#39;shelters#create&#39;</code>
+            <code class="ruby">  get &#39;/shelters/:id&#39;, to: &#39;shelters#show&#39;</code>
           </li>
         </div>
       
@@ -3851,7 +3895,7 @@
 
             
 
-            <code class="ruby">  delete &#39;shelters/:id&#39;, to: &#39;shelters#destroy&#39;</code>
+            <code class="ruby">  post &#39;/shelters&#39;, to: &#39;shelters#create&#39;</code>
           </li>
         </div>
       
@@ -3862,7 +3906,7 @@
 
             
 
-            <code class="ruby">  get &#39;/shelters/:id/edit&#39;, to: &#39;shelters#edit&#39;</code>
+            <code class="ruby">  delete &#39;shelters/:id&#39;, to: &#39;shelters#destroy&#39;</code>
           </li>
         </div>
       
@@ -3873,18 +3917,18 @@
 
             
 
-            <code class="ruby">  patch &#39;shelters/:id&#39;, to: &#39;shelters#update&#39;</code>
+            <code class="ruby">  get &#39;/shelters/:id/edit&#39;, to: &#39;shelters#edit&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="10">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="10">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">  patch &#39;shelters/:id&#39;, to: &#39;shelters#update&#39;</code>
           </li>
         </div>
       
@@ -3895,12 +3939,45 @@
 
             
 
-            <code class="ruby">  get &#39;/pets&#39;, to: &#39;pets#index&#39;</code>
+            <code class="ruby">  get &#39;/shelters/:id/pets&#39;, to: &#39;pets#index&#39;</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="12">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="13">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  get &#39;/pets&#39;, to: &#39;pets#index&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="14">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="15">
             
             
 
@@ -5152,7 +5229,7 @@
 
             
 
-            <code class="ruby">RSpec.describe &quot;As a visitor&quot; do</code>
+            <code class="ruby">RSpec.describe &#39;As a visitor&#39; do</code>
           </li>
         </div>
       
@@ -5185,7 +5262,7 @@
 
             
 
-            <code class="ruby">      @shelter_1 = Shelter.create!(name: &#39;FurBabies4Ever&#39;, address: &#39;1664 Poplar St&#39;, city: &#39;Denver&#39;, state: &#39;CO&#39;, zip: 80220)</code>
+            <code class="ruby">      @shelter_1 = Shelter.create!(name: &#39;FurBabies4Ever&#39;, address: &#39;1664 Poplar St&#39;, city: &#39;Denver&#39;, state: &#39;CO&#39;, zip: &#39;80220&#39;)</code>
           </li>
         </div>
       
@@ -5196,7 +5273,7 @@
 
             
 
-            <code class="ruby">      @shelter_2 = Shelter.create!(name: &#39;PuppyLove&#39;, address: &#39;16 Washington Blvd&#39;, city: &#39;Los Angeles&#39;, state: &#39;CA&#39;, zip: 91442)</code>
+            <code class="ruby">      @shelter_2 = Shelter.create!(name: &#39;PuppyLove&#39;, address: &#39;16 Washington Blvd&#39;, city: &#39;Los Angeles&#39;, state: &#39;CA&#39;, zip: &#39;91442&#39;)</code>
           </li>
         </div>
       
@@ -5229,7 +5306,7 @@
 
             
 
-            <code class="ruby">    it &quot;I can see the shelter name&quot; do</code>
+            <code class="ruby">    it &#39;I can see the shelter name&#39; do</code>
           </li>
         </div>
       
@@ -5306,7 +5383,7 @@
 
             
 
-            <code class="ruby">    it &quot;I can see the shelter address&quot; do</code>
+            <code class="ruby">    it &#39;I can see the shelter address&#39; do</code>
           </li>
         </div>
       
@@ -5383,7 +5460,7 @@
 
             
 
-            <code class="ruby">    it &quot;I can see the shelter city&quot; do</code>
+            <code class="ruby">    it &#39;I can see the shelter city&#39; do</code>
           </li>
         </div>
       
@@ -5460,7 +5537,7 @@
 
             
 
-            <code class="ruby">    it &quot;I can see the shelter state&quot; do</code>
+            <code class="ruby">    it &#39;I can see the shelter state&#39; do</code>
           </li>
         </div>
       
@@ -5537,7 +5614,7 @@
 
             
 
-            <code class="ruby">    it &quot;I can see the shelter zip code&quot; do</code>
+            <code class="ruby">    it &#39;I can see the shelter zip code&#39; do</code>
           </li>
         </div>
       
@@ -5614,7 +5691,7 @@
 
             
 
-            <code class="ruby">    it &quot;I can see a button to delete the shelter&quot; do</code>
+            <code class="ruby">    it &#39;I can see a button to delete the shelter&#39; do</code>
           </li>
         </div>
       
@@ -5680,7 +5757,7 @@
 
             
 
-            <code class="ruby">    it &quot;when I click the delete shelter button I should be redirected to the shelters index page&quot; do</code>
+            <code class="ruby">    it &#39;when I click the delete shelter button I should be redirected to the shelters index page&#39; do</code>
           </li>
         </div>
       
@@ -5790,7 +5867,7 @@
 
             
 
-            <code class="ruby">    it &quot;I can see a button to update the shelter&quot; do</code>
+            <code class="ruby">    it &#39;I can see a button to update the shelter&#39; do</code>
           </li>
         </div>
       
@@ -5856,7 +5933,7 @@
 
             
 
-            <code class="ruby">    it &quot;when I click the update shelter button I should be taken to that shelters edit form page&quot; do</code>
+            <code class="ruby">    it &#39;when I click the update shelter button I should be taken to that shelters edit form page&#39; do</code>
           </li>
         </div>
       

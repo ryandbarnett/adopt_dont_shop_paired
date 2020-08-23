@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
+  
   get '/shelters', to: 'shelters#index'
   get '/shelters/new', to: 'shelters#new'
   get '/shelters/:id', to: 'shelters#show'
@@ -7,6 +8,8 @@ Rails.application.routes.draw do
   delete 'shelters/:id', to: 'shelters#destroy'
   get '/shelters/:id/edit', to: 'shelters#edit'
   patch 'shelters/:id', to: 'shelters#update'
+  get '/shelters/:id/pets', to: 'pets#index'
 
   get '/pets', to: 'pets#index'
+
 end
