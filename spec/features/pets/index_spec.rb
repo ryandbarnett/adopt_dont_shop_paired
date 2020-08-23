@@ -84,10 +84,10 @@ RSpec.describe 'as a visitor' do
       visit '/pets'
 
       within "#pet-#{@pet_1.id}" do
-        expect(page).to have_content(@pet_1.name)
+        expect(page).to have_content(@pet_1.shelter.name)
       end
       within "#pet-#{@pet_2.id}" do
-        expect(page).to have_content(@pet_2.name)
+        expect(page).to have_content(@pet_2.shelter.name)
       end
     end
 
