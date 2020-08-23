@@ -91,6 +91,20 @@ RSpec.describe 'as a visitor' do
       end
     end
 
+    it "I can see edit pet links" do
+      visit '/pets'
+
+      expect(page).to have_link("Edit Pet", count: 2)
+    end
+
+    it "when I click on an edit link I go to that pets edit page" do
+      visit '/pets'
+
+      click_link('Edit Pet', match: :first)
+
+      expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
+    end
+
     describe 'for a specific shelter' do
       it 'I should only see pets for that shelter' do
         visit "/shelters/#{@shelter_1.id}/pets"
