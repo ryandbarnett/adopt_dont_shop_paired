@@ -1,13 +1,11 @@
 <h1>All Pets<h1>
 <% @pets.each do |pet| %>
-  <article class='pet' id="pet-<%= pet.id %>" >
+  <section class='pet' id="pet-<%= pet.id %>" >
     <h2><%= pet.name %></h2>
     <img src=<%= pet.image %> />
     <p>Age: <%= pet.age %></p>
     <p>Sex: <%= pet.sex %></p>
-    <p>Shelter: <%= pet.shelter.name %>
-  </article>
-<% end %>
-<% if @shelter_id %>
-  <%= button_to 'Create Pet', "/shelters/#{@shelter_id}/pets/new", method: :get %>
+    <p>Shelter: <%= pet.shelter.name %></p>
+    <%= link_to "Edit Pet", "/pets/#{pet.id}/edit" %>
+  </section>
 <% end %>
