@@ -1,0 +1,9 @@
+<h1>All Pets<h1>
+<% @pets.each do |pet| %>
+  <article class='pet' id="pet-<%= pet.id %>" >
+    <h2><%= pet.name %></h2>
+    <img src=<%= pet.image %> />
+    <p>Age: <%= pet.age %></p>
+    <p>Sex: <%= pet.sex %></p>
+  </article>
+<% end %>
