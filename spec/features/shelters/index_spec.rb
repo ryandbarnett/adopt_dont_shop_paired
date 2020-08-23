@@ -40,6 +40,21 @@ RSpec.describe "As a visitor" do
       expect(current_path).to eq("/shelters/#{@shelter_1.id}/edit")
     end
 
+    it "I can see delete shelter links" do
+      visit '/shelters'
+
+      expect(page).to have_link("Delete Shelter", count: 2)
+    end
+
+    it "when I click on a delete shelter link I go to the shelter index page and the deleted shelter is gone" do
+      visit '/shelters'
+
+      click_link('Delete Shelter', match: :first)
+
+      expect(current_path).to eq("/shelters")
+      expect(page).to_not have_content(@shelter_1.name)
+    end
+
     it "I can see a 'New Shelter' link" do
       visit '/shelters'
 
