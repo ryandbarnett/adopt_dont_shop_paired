@@ -7,3 +7,6 @@
     <p>Sex: <%= pet.sex %></p>
   </article>
 <% end %>
+<% if @shelter_id %>
+  <%= button_to 'Create Pet', "/shelters/#{@shelter_id}/pets/new", method: :get %>
+<% end %>

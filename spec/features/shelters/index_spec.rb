@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "As a visitor" do
   describe 'when I visit the Shelters Index page' do
     before :each do
-      @shelter_1 = Shelter.create!(name: 'FurBabies4Ever', address: '1664 Poplar St', city: 'Denver', state: 'CO', zip: 80220)
-      @shelter_2 = Shelter.create!(name: 'PuppyLove', address: '1665 Poplar St', city: 'Fort Collins', state: 'CO', zip: 91442)
+      @shelter_1 = Shelter.create!(name: 'FurBabies4Ever', address: '1664 Poplar St', city: 'Denver', state: 'CO', zip: '80220')
+      @shelter_2 = Shelter.create!(name: 'PuppyLove', address: '1665 Poplar St', city: 'Fort Collins', state: 'CO', zip: '91442')
     end
 
     it "I can see all the shelter names" do
