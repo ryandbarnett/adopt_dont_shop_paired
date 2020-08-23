@@ -105,6 +105,21 @@ RSpec.describe 'as a visitor' do
       expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
     end
 
+    it "I can see delete pet links" do
+      visit '/pets'
+
+      expect(page).to have_link("Delete Pet", count: 2)
+    end
+
+    it "when I click on a delete pet link I go to the pets index page and the deleted pet is gone" do
+      visit '/pets'
+
+      click_link('Delete Pet', match: :first)
+
+      expect(current_path).to eq("/pets")
+      expect(page).to_not have_content(@pet_1.name)
+    end
+
     describe 'for a specific shelter' do
       it 'I should only see pets for that shelter' do
         visit "/shelters/#{@shelter_1.id}/pets"
