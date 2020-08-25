@@ -37,8 +37,5 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content(2)
       expect(page).to have_content("So much poo!")
       expect(page).to have_xpath("//img['catshelter1.jpeg']")
-
-
-
   end
 end
