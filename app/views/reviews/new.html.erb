@@ -1,0 +1,17 @@
+<h1> Create Review for <%= @shelter.name %></h1>
+
+<%= form_tag "/shelters/#{@shelter.id}" do %>
+  <%= label_tag :title %>
+  <%= text_field_tag :title %>
+
+  <%= label_tag :rating %>
+  <%= text_field_tag :rating %>
+
+  <%= label_tag :content %>
+  <%= text_field_tag :content %>
+
+  <%= label_tag :image %>
+  <%= text_field_tag :image %>
+
+  <%= submit_tag 'Submit Review' %>
+<% end %>
