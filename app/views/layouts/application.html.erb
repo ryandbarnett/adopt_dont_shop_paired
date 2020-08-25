@@ -17,6 +17,11 @@
         <%= link_to 'Shelters', '/shelters' %>
       </nav>
     </header>
+
+    <% flash.each do |type, message| %>
+      <p><%= message %></p>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
