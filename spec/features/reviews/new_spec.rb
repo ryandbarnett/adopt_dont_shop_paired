@@ -38,4 +38,17 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content("So much poo!")
       expect(page).to have_xpath("//img['catshelter1.jpeg']")
   end
+
+  it 'I can not create a review without a title' do
+    visit "/shelters/#{@shelter_1.id}/create_review"
+
+    fill_in 'Rating', with: 2
+    fill_in 'Content', with: "So much poo!"
+    fill_in 'Image', with: "catshelter1.jpeg"
+
+    click_on "Submit Review"
+
+    expect(page).to have_content("Review not created: Reviews must have a title, rating, and content")
+    expect(page).to have_button('Submit Review')
+  end
 end
