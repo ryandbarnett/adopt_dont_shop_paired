@@ -3,3 +3,11 @@
 <%= link_to 'Shelter Pets', "/shelters/#{@shelter.id}/pets" %>
 <%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>
 <%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit", method: :get %>
+
+  <% @shelter.reviews.each do |review| %>
+    <%= review.title %><br>
+    <%= review.rating %><br>
+    <%= review.content %><br>
+    <%= review.image %><br>
+    <%= image_tag(review.image, :size => "200x100")%><br>
+  <% end  %>
