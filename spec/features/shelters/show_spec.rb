@@ -84,5 +84,38 @@ RSpec.describe 'As a visitor' do
 
       expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets")
     end
+
+
+    it 'I can see links to edit reviews next to each review' do
+      review_1 = @shelter_1.reviews.create!(
+        title: "Great Shelter!",
+        rating: 5,
+        content: "Has a lot of cats.",
+        image: "catshelter1.jpeg"
+      )
+      review_2 = @shelter_1.reviews.create!(
+        title: "Crappy Shelter!",
+        rating: 1,
+        content: "Not enough cats!",
+        image: "catshelter2.jpeg"
+      )
+      visit "/shelters/#{@shelter_1.id}"
+
+      expect(page).to have_link("Edit Review", count: 2)
+    end
+
+    it 'When I click an edit review link I should go to the edit review form' do
+      review_1 = @shelter_1.reviews.create!(
+        title: "Great Shelter!",
+        rating: 5,
+        content: "Has a lot of cats.",
+        image: "catshelter1.jpeg"
+      )
+
+      visit "/shelters/#{@shelter_1.id}"
+
+      click_link "Edit Review"
+      expect(current_path).to eq("shelters/#{@shelter_1.id}/edit_review")
+    end
   end
 end
