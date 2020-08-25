@@ -1063,8 +1063,17 @@
           null,
           null
         ]
+      },
+      "/Users/philipdefraties/2module/adopt_dont_shop_paired/app/controllers/reviews_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1598325553
+    "timestamp": 1598326704
   }
 }
