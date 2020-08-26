@@ -37,8 +37,20 @@ RSpec.describe 'As a visitor' do
 
   describe "When I go to the review edit form" do
     it "I should be able to edit a review" do
-      visit "/shelters/#{@shelter_1.id}"
-      click_on "Edit"
+      visit "/shelters/#{@shelter_1.id}/reviews/#{@review_1.id}/edit"
+
+      fill_in 'Title', with: 'An Ok Shelter'
+      fill_in 'Rating', with: 3
+      fill_in 'Content', with: 'Has a balanced number of cats'
+
+      click_on "Update Review"
+
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+
+      within ".shelter-reviews" do
+        expect(page).to have_content('An Ok Shelter')
+        expect(page).to have_content('Has a balanced number of cats')
+      end
     end
 
   end
