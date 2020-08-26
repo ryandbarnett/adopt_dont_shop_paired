@@ -58,13 +58,13 @@ RSpec.describe 'As a visitor' do
 
       fill_in 'Title', with: 'An Ok Shelter'
       fill_in 'Rating', with: 3
+      fill_in 'Content', with: ''
 
       click_on "Update Review"
 
-      expect(page).to have_content("Review not updated: Reviews must have a
-         title, rating, and content")
+      expect(page).to have_content("Review not updated: Reviews must have a title, rating, and content")
 
-      expect(page).to have_link('Update Review')
+      expect(page).to have_button('Update Review')
     end
   end
 end
