@@ -53,5 +53,18 @@ RSpec.describe 'As a visitor' do
       end
     end
 
+    it "cannot edit a review with a field left blank" do
+      visit "/shelters/#{@shelter_1.id}/reviews/#{@review_1.id}/edit"
+
+      fill_in 'Title', with: 'An Ok Shelter'
+      fill_in 'Rating', with: 3
+
+      click_on "Update Review"
+
+      expect(page).to have_content("Review not updated: Reviews must have a
+         title, rating, and content")
+
+      expect(page).to have_link('Update Review')
+    end
   end
 end
