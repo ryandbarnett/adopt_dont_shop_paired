@@ -20,9 +20,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    # @shelter = Shelter.find(params[:shelter_id])
     review = Review.find(params[:id])
-    # @review.update(review_params)
     if review.update(review_params)
       redirect_to "/shelters/#{review.shelter.id}"
     else
