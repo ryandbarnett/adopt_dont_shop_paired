@@ -19,10 +19,10 @@ RSpec.describe 'As a visitor' do
   describe "When I visit a shelter's show page"
     it "Can click a link to add a new review" do
 
-      visit ("/shelters/#{@shelter_1.id}")
+      visit "/shelters/#{@shelter_1.id}"
       click_on "Add a new review"
 
-      expect(current_path).to eq("/shelters/#{@shelter_1.id}/create_review")
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}/reviews/new")
 
       fill_in 'Title', with: "Crappy Shelter!"
       fill_in 'Rating', with: 2
@@ -40,7 +40,7 @@ RSpec.describe 'As a visitor' do
   end
 
   it 'I can not create a review without a title' do
-    visit "/shelters/#{@shelter_1.id}/create_review"
+    visit "/shelters/#{@shelter_1.id}/reviews/new"
 
     fill_in 'Rating', with: 2
     fill_in 'Content', with: "So much poo!"
