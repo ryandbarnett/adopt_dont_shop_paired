@@ -27,6 +27,12 @@ class ReviewsController < ApplicationController
       flash[:notice] = "Review not updated: Reviews must have a title, rating, and content"
       redirect_to "/shelters/#{review.shelter.id}/reviews/#{review.id}/edit"
     end
+
+    def destroy
+      @shelter = Shelter.find(params[:shelter_id])
+      Review.destroy(params[:id])
+      redirect_to "/shelters/#{@shelter.id}"
+    end
   end
 
   private
