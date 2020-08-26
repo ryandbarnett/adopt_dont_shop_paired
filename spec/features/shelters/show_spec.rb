@@ -157,7 +157,7 @@ RSpec.describe 'As a visitor' do
       expect(current_path).to eq("/shelters/#{@shelter_1.id}")
 
       expect(page).to_not have_content(review_1.attributes.values)
-      expect(page).to have_content(review_2.attributes.values)
+      expect(page).to have_content(review_2.title)
     end
   end
 end
