@@ -3,12 +3,19 @@
 <%= link_to 'Shelter Pets', "/shelters/#{@shelter.id}/pets" %>
 <%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>
 <%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit", method: :get %><br>
-<%= link_to 'Add a new review', "/shelters/#{@shelter.id}/create_review", method: :get %><br>
+<%= link_to 'Add a new review', "/shelters/#{@shelter.id}/reviews/new", method: :get %><br>
 
 <h3>Reviews</h3>
-  <% @shelter.reviews.each do |review| %>
-    Title: <%= review.title %><br>
-    Rating(out of 5): <%= review.rating %><br>
-    Review: <%= review.content %><br>
-    <img src=<%= review.image %> />
-  <% end  %>
+<section class="shelter-reviews">
+  <% if @shelter.reviews %>
+    <% @shelter.reviews.each do |review| %>
+      Title: <%= review.title %><br>
+      Rating(out of 5): <%= review.rating %><br>
+      Review: <%= review.content %><br>
+      <img src=<%= review.image %> />
+      <%= link_to 'Edit Review', "/shelters/#{@shelter.id}/reviews/#{review.id}/edit", method: :get %><br>
+    <% end  %>
+  <% else %>
+    <p>No Reviews Available</p>
+  <% end %>
+</section>
