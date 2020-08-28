@@ -6,3 +6,4 @@
 <p>Adoptable: <%= @pet.adoptable %></p>
 <%= link_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
 <%= link_to 'Update Pet', "/pets/#{@pet.id}/edit", method: :get %>
+<%= button_to 'Add to favorites', "/favorites/#{@pet.id}", method: :patch%>
