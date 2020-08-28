@@ -8,7 +8,8 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    favorites.extract_ids
-    @pets = favorites.translate_ids
+    @pets = favorites.contents.keys.map do |fav_id|
+      Pet.find(fav_id.to_i)
+    end
   end
 end
