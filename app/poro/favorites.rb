@@ -15,4 +15,16 @@ class Favorites
   def count_of(id)
     @contents[id.to_s].to_i
   end
+
+  def extract_ids
+    @ids = @contents.map do |key, value|
+      key.to_i
+    end
+  end
+
+  def translate_ids
+    @ids.map do |id|
+      Pet.find(id)
+    end
+  end
 end
