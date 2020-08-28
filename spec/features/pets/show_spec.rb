@@ -101,13 +101,13 @@ RSpec.describe 'As a visitor' do
     it 'I see a button to add the pet to favorites' do
       visit "/pets/#{@pet_1.id}"
 
-      expect(page).to have_button('Favorite Pet')
+      expect(page).to have_button('Add to favorites')
     end
 
     it 'when I click the add pet to favorites button I should be taken back to the pets show page' do
       visit "/pets/#{@pet_1.id}"
 
-      click_button 'Favorite Pet'
+      click_button 'Add to favorites'
 
       expect(current_path).to eq("/pets/#{@pet_1.id}")
       expect(page).to have_content("Rufus added to favorites")
