@@ -1,0 +1,9 @@
+<header><h2 class='page-title'>Favorite Pets</h2></header>
+<section class='cards-container'>
+  <% @pets.each do |pet| %>
+    <article id="pet-<%= pet.id %>" class='pet card'>
+      <p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
+      <img src=<%= pet.image %> />
+    </article>
+  <% end %>
+</section>
