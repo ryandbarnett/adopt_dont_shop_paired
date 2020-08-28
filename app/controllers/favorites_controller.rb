@@ -8,11 +8,7 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    pet_id_strings = session[:favorites].map do |key, value|
-                        key.to_i
-                     end
-    @pets = pet_id_strings.map do |id|
-              Pet.find(id)
-            end
+    favorites.extract_ids
+    @pets = favorites.translate_ids
   end
 end
