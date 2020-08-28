@@ -36,16 +36,5 @@ describe Favorites do
         expect(favorites.total_count).to eq(4)
       end
     end
-
-    describe "#extract_ids" do
-      it "maps keys as integers" do
-        favorites = Favorites.new({
-          '1' => 1,
-          '2' => 1
-        })
-        expect(favorites.extract_ids).to eq([1, 2])
-
-      end
-    end
   end
 end
