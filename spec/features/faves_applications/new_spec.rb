@@ -39,7 +39,23 @@ RSpec.describe "As a visitor" do
 
       visit "/favorites"
 
-      expect(page).to have_link('Apply to adopt')
+      expect(page).to have_button('Apply to adopt')
     end
+
+    it "When I click the link I am taken to a new application form" do
+      visit "/pets/#{@pet_1.id}"
+
+      click_button 'Add to favorites'
+
+      visit "/pets/#{@pet_2.id}"
+
+      click_button 'Add to favorites'
+
+      visit "/favorites"
+
+      click_button 'Apply to adopt'
+      expect(current_path).to eq('/faves_application')
+    end
+
   end
 end
