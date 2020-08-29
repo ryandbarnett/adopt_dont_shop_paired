@@ -9,5 +9,6 @@
         <img src=<%= pet.image %> />
       </article>
     <% end %>
+    <%= button_to "Remove All Favorited Pets", "/favorites", method: :delete %>
   <% end %>
 </section>
