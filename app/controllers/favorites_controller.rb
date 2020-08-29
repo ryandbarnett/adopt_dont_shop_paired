@@ -1,15 +1,18 @@
 class FavoritesController < ApplicationController
   def update
     pet = Pet.find(params[:pet_id])
-    favorites.add_pet(pet.id)
-    session[:favorites] = @favorites.contents
+    if session[:favorites]
+      session[:favorites] << params[:pet_id]
+    else
+      session[:favorites] = [params[:pet_id]]
+    end
     redirect_to "/pets/#{pet.id}"
     flash[:notice] = "#{pet.name} added to favorites"
   end
 
   def index
-    @pets = favorites.contents.keys.map do |fav_id|
-      Pet.find(fav_id.to_i)
+    if session[:favorites]
+      @favorite_pets = Pet.find(session[:favorites])
     end
   end
 end

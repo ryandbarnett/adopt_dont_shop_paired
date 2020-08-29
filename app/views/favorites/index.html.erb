@@ -1,12 +1,11 @@
 <header><h2 class='page-title'>Favorite Pets</h2></header>
 <section class='cards-container'>
-  <% unless @pets.count > 0 %>
-    <%= "You haven't favorited any pets yet." %>
-  <% end %>
-  <% @pets.each do |pet| %>
+  <% if @favorite_pets %>
+    <% @favorite_pets.each do |pet| %>
       <article id="pet-<%= pet.id %>" class='pet card'>
-      <p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
-      <img src=<%= pet.image %> />
+        <p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
+        <img src=<%= pet.image %> />
       </article>
     <% end %>
+  <% end %>
 </section>
