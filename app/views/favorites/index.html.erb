@@ -12,5 +12,6 @@
         <p><%= button_to "Remove from favorites", "/favorites/#{pet.id}", method: :delete %>
       </article>
     <% end %>
+    <%= button_to "Remove All Favorited Pets", "/favorites", method: :delete %>
   <% end %>
 </section>
