@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'as a visitor' do
+RSpec.describe 'As a visitor' do
   describe 'when I visit my favorites index page' do
     before :each do
-
       @shelter_1 = Shelter.create!(
         name: 'FurBabies4Ever',
         address: '1664 Poplar St',
@@ -29,23 +28,49 @@ RSpec.describe 'as a visitor' do
       )
     end
 
-      it "can see my favorited pets names as links and images" do
+    it "I can see my favorited pets names as links and images" do
 
-        visit "/pets/#{@pet_1.id}"
+      visit "/pets/#{@pet_1.id}"
 
-        click_button 'Add to favorites'
+      click_button 'Add to favorites'
 
-        visit "/pets/#{@pet_2.id}"
+      visit "/pets/#{@pet_2.id}"
 
-        click_button 'Add to favorites'
+      click_button 'Add to favorites'
 
-        visit "/favorites"
+      visit "/favorites"
 
-        expect(page).to have_link(@pet_1.name)
-        expect(page).to have_css("img[src='#{@pet_1.image}']")
-        expect(page).to have_link(@pet_2.name)
-        expect(page).to have_css("img[src='#{@pet_2.image}']")
-      end
+      expect(page).to have_link(@pet_1.name)
+      expect(page).to have_css("img[src='#{@pet_1.image}']")
+      expect(page).to have_link(@pet_2.name)
+      expect(page).to have_css("img[src='#{@pet_2.image}']")
     end
 
+    it "I can see a remove all favorites button" do
+      visit "/pets/#{@pet_1.id}"
+
+      click_button 'Add to favorites'
+      
+      visit "/favorites"
+
+      expect(page).to have_button('Remove All Favorited Pets')
+    end
+
+    it "when I click the remove all favorites button all the favorited pets are removed" do
+      visit "/pets/#{@pet_1.id}"
+
+      click_button 'Add to favorites'
+
+      visit "/pets/#{@pet_2.id}"
+
+      click_button 'Add to favorites'
+
+      visit "/favorites"
+
+      click_button 'Remove All Favorited Pets'
+
+      expect(page).to_not have_link(@pet_1.name)
+      expect(page).to_not have_link(@pet_2.name)
+    end
+  end
 end
