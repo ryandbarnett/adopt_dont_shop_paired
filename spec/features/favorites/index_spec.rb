@@ -63,9 +63,7 @@ RSpec.describe 'as a visitor' do
       expect(page).not_to have_content("You haven't favorited any pets yet.")
     end
 
-    describe "It sees a button to remove favorite next to each" do
-      describe "Clicks a remove favorite button and the page is reloaded" do
-        it "It no longer sees that favorite on the page" do
+    it "It sees a button to remove favorite next to each" do
           visit "/pets/#{@pet_1.id}"
 
           click_button 'Add to favorites'
@@ -79,11 +77,33 @@ RSpec.describe 'as a visitor' do
           within "#pet-#{@pet_1.id}" do
             expect(page).to have_button("Remove from favorites")
           end
-          
+
           within "#pet-#{@pet_2.id}" do
             expect(page).to have_button("Remove from favorites")
           end
-        end
+    end
+
+    describe "Clicks a remove favorite button and the page is reloaded" do
+      it "It no longer sees that favorite on the page" do
+        visit "/pets/#{@pet_1.id}"
+
+
+        click_button 'Add to favorites'
+
+        visit "/pets/#{@pet_2.id}"
+
+        click_button 'Add to favorites'
+
+        visit "/favorites"
+
+        all(:button, 'Remove from favorites')[0].click
+
+        expect(page).to_not have_content("#{@pet_1.image}")
+        expect(page).to have_content("Favorite Pet Count: 1")
+
+        click_button 'Remove from favorites'
+        expect(page).to have_content("You haven't favorited any pets yet.")
+        expect(page).to have_content("Favorite Pet Count: 0")
       end
     end
   end
