@@ -1,6 +1,8 @@
 <header><h2 class='page-title'>Favorite Pets</h2></header>
 <section class='cards-container'>
-  <% unless @favorite_pets %>
+  <% if !@favorite_pets %>
+    <%= "You haven't favorited any pets yet." %>
+  <% elsif @favorite_pets.empty? %>
     <%= "You haven't favorited any pets yet." %>
   <% else %>
     <% @favorite_pets.each do |pet| %>
