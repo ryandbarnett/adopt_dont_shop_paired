@@ -124,7 +124,7 @@ RSpec.describe 'As a visitor' do
         click_button 'Add to favorites'
 
         expect(current_path).to eq("/pets/#{@pet_1.id}")
-        save_and_open_page
+        
         expect(page).to_not have_button('Add to favorites')
       end
     end
