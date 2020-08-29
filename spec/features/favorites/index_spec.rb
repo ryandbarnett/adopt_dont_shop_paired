@@ -50,7 +50,7 @@ RSpec.describe 'As a visitor' do
       visit "/pets/#{@pet_1.id}"
 
       click_button 'Add to favorites'
-      
+
       visit "/favorites"
 
       expect(page).to have_button('Remove All Favorited Pets')
@@ -69,8 +69,27 @@ RSpec.describe 'As a visitor' do
 
       click_button 'Remove All Favorited Pets'
 
-      expect(page).to_not have_link(@pet_1.name)
-      expect(page).to_not have_link(@pet_2.name)
+      expect(page).to have_content("You haven't favorited any pets yet.")
+    end
+
+    it "Sees no favorites message on index page user has no favorites" do
+      visit "/favorites"
+
+      expect(page).to have_content("You haven't favorited any pets yet.")
+    end
+
+    it "Sees no no-favorites message on index page if user has favorites" do
+      visit "/pets/#{@pet_1.id}"
+
+      click_button 'Add to favorites'
+
+      visit "/pets/#{@pet_2.id}"
+
+      click_button 'Add to favorites'
+
+      visit "/favorites"
+
+      expect(page).not_to have_content("You haven't favorited any pets yet.")
     end
   end
 end
