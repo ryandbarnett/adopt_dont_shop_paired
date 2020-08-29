@@ -15,4 +15,9 @@ class FavoritesController < ApplicationController
       @favorite_pets = Pet.find(session[:favorites])
     end
   end
+
+  def delete
+    session[:favorites].delete(params[:pet_id])
+    redirect_to '/favorites'
+  end
 end
