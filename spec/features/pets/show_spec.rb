@@ -104,16 +104,28 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_button('Add to favorites')
     end
 
-    it 'when I click the add pet to favorites button I should be taken back to the pets show page' do
-      visit "/pets/#{@pet_1.id}"
+    describe 'when I click the add pet to favorites button' do
+      it 'I should be taken back to the pets show page' do
+        visit "/pets/#{@pet_1.id}"
 
-      click_button 'Add to favorites'
+        click_button 'Add to favorites'
 
-      expect(current_path).to eq("/pets/#{@pet_1.id}")
-      expect(page).to have_content("Rufus added to favorites")
+        expect(current_path).to eq("/pets/#{@pet_1.id}")
+        expect(page).to have_content("Rufus added to favorites")
 
-      within('.menu') do
-        expect(page).to have_content('Favorite Pet Count: 1')
+        within('.menu') do
+          expect(page).to have_content('Favorite Pet Count: 1')
+        end
+      end
+
+      it 'if I already favorited this pet I should NOT see the link to favorite that pet' do
+        visit "/pets/#{@pet_1.id}"
+
+        click_button 'Add to favorites'
+
+        expect(current_path).to eq("/pets/#{@pet_1.id}")
+        save_and_open_page
+        expect(page).to_not have_button('Add to favorites')
       end
     end
   end
