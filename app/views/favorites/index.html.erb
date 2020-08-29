@@ -7,6 +7,7 @@
       <article id="pet-<%= pet.id %>" class='pet card'>
         <p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
         <img src=<%= pet.image %> />
+        <p><%= button_to "Remove from favorites", "/favorites/#{pet.id}", method: :delete %>
       </article>
     <% end %>
   <% end %>
