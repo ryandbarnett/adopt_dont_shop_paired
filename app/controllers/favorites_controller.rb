@@ -15,4 +15,9 @@ class FavoritesController < ApplicationController
       @favorite_pets = Pet.find(session[:favorites])
     end
   end
+
+  def destroy
+    session[:favorites] = nil
+    render :index
+  end
 end
