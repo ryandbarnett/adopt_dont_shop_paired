@@ -46,6 +46,21 @@ RSpec.describe 'as a visitor' do
         expect(page).to have_link(@pet_2.name)
         expect(page).to have_css("img[src='#{@pet_2.image}']")
       end
+
+    it "Sees no favorites message on index page user has no favorites" do
+      visit "/favorites"
+
+      expect(page).to have_content("You haven't favorited any pets yet.")
     end
 
+    it "Sees no no-favorites message on index page if user has favorites" do
+      visit "/pets/#{@pet_1.id}"
+
+      click_button 'Add to favorites'
+
+      visit "/favorites"
+
+      expect(page).not_to have_content("You haven't favorited any pets yet.")
+    end
+  end
 end
