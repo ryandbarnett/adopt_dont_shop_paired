@@ -83,10 +83,6 @@ RSpec.describe 'As a visitor' do
 
       click_button 'Add to favorites'
 
-      visit "/pets/#{@pet_2.id}"
-
-      click_button 'Add to favorites'
-
       visit "/favorites"
 
       expect(page).not_to have_content("You haven't favorited any pets yet.")
