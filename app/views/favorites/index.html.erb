@@ -1,6 +1,8 @@
 <header><h2 class='page-title'>Favorite Pets</h2></header>
 <section class='cards-container'>
-  <% if @favorite_pets %>
+  <% unless @favorite_pets %>
+    <%= "You haven't favorited any pets yet." %>
+  <% else %>
     <% @favorite_pets.each do |pet| %>
       <article id="pet-<%= pet.id %>" class='pet card'>
         <p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
