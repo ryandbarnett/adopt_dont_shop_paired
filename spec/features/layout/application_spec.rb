@@ -7,5 +7,13 @@ RSpec.describe "As a visitor" do
 
       expect(page).to have_content('Favorite Pet Count: 0')
     end
+
+    it "when I click on the favorite indicator in the nav bar" do
+      visit '/shelters'
+
+      click_link 'Favorite Pet Count: 0'
+
+      expect(current_path).to eq('/favorites')
+    end
   end
 end

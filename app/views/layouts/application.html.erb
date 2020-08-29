@@ -15,7 +15,7 @@
       <nav class="menu">
         <%= link_to 'Pets', '/pets' %>
         <%= link_to 'Shelters', '/shelters' %>
-        <p>Favorite Pet Count: <%= favorites.total_count %></p>
+        <%= link_to "Favorite Pet Count: #{favorites.total_count}", '/favorites' %>
       </nav>
     </header>
 
