@@ -56,7 +56,7 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_button('Remove All Favorited Pets')
     end
 
-    it "when I click the remove all favorites button all the favorited pets are removed" do
+    it "When I click the remove all favorites button all the favorited pets are removed" do
       visit "/pets/#{@pet_1.id}"
 
       click_button 'Add to favorites'
@@ -72,13 +72,13 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content("You haven't favorited any pets yet.")
     end
 
-    it "Sees no favorites message on index page user has no favorites" do
+    it "I can see no favorites message if I have no favorites" do
       visit "/favorites"
 
       expect(page).to have_content("You haven't favorited any pets yet.")
     end
 
-    it "Sees no no-favorites message on index page if user has favorites" do
+    it "I do not see the no favorites message if I have favorites" do
       visit "/pets/#{@pet_1.id}"
 
       click_button 'Add to favorites'
@@ -88,7 +88,7 @@ RSpec.describe 'As a visitor' do
       expect(page).not_to have_content("You haven't favorited any pets yet.")
     end
 
-    it "It sees a button to remove favorite next to each" do
+    it "I can see a button to remove favorite next to each pet name" do
           visit "/pets/#{@pet_1.id}"
 
           click_button 'Add to favorites'
@@ -108,8 +108,8 @@ RSpec.describe 'As a visitor' do
           end
     end
 
-    describe "Clicks a remove favorite button and the page is reloaded" do
-      it "It no longer sees that favorite on the page" do
+    describe "when I click a remove favorite button" do
+      it "I no longer sees that favorite on the page" do
         visit "/pets/#{@pet_1.id}"
 
 
