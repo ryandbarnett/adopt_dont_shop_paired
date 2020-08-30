@@ -20,6 +20,11 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def show
+    @pet_application = PetApplication.find(params[:id])
+  end
+
+  private
   def application_params
     params.permit(:name, :address, :city, :state, :zip, :phone_number, :description)
   end
