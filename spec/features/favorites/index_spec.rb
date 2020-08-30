@@ -115,7 +115,7 @@ RSpec.describe 'As a visitor' do
         click_button 'Add to favorites'
 
         visit '/favorites'
-        
+
         click_button('Remove from favorites')
 
         expect(page).to_not have_content("#{@pet_1.name}")
@@ -145,6 +145,35 @@ RSpec.describe 'As a visitor' do
         click_button('Remove from favorites')
 
         expect(page).to have_content("You haven't favorited any pets yet.")
+      end
+
+      describe 'After one or more applications have been created' do
+        it 'I see a section on the page that has a list of pet names links that have at least one application on them' do
+          visit "/pets/#{@pet_1.id}"
+
+          click_button 'Add to favorites'
+
+          visit "/pets/#{@pet_2.id}"
+
+          click_button 'Add to favorites'
+          
+          visit '/application'
+
+          check('Rufus')
+          check('Snuggles')
+          fill_in 'Name', with: 'Phil'
+          fill_in 'Address', with: '55 whatever st'
+          fill_in 'City', with: 'Denver'
+          fill_in 'State', with: 'CO'
+          fill_in 'Zip', with: '33333'
+          fill_in 'Phone number', with: '3434343434'
+          fill_in 'Description', with: 'some text'
+          click_button 'Submit application'
+
+          within('#pets-with-applications') do
+            expect(page).to have_link('Rufus')
+          end
+        end
       end
     end
   end
