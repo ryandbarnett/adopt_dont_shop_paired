@@ -8,7 +8,7 @@
 <%= link_to 'Update Pet', "/pets/#{@pet.id}/edit", method: :get %>
 
 <% if session[:favorites] && session[:favorites].include?(@pet.id.to_s) %>
-  <% # Delete pet from favorites button goes here %>
+  <%= button_to 'Remove from favorites', "/favorites/#{@pet.id}", method: :delete %>
 <% else %>
   <%= button_to 'Add to favorites', "/favorites/#{@pet.id}", method: :patch %>
 <% end %>
