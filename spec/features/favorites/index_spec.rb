@@ -153,10 +153,15 @@ RSpec.describe 'As a visitor' do
           visit "/pets/#{@pet_1.id}"
 
           click_button 'Add to favorites'
+
+          visit "/pets/#{@pet_2.id}"
+
+          click_button 'Add to favorites'
           # Make an application for favorite pet
           visit '/application'
 
           check('Rufus')
+          check('Snuggles')
           fill_in 'Name', with: 'Phil'
           fill_in 'Address', with: '55 whatever st'
           fill_in 'City', with: 'Denver'
