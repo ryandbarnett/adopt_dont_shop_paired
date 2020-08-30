@@ -21,7 +21,7 @@ class FavoritesController < ApplicationController
     session[:favorites].delete(params[:pet_id])
     redirect_to '/favorites'
   end
-  
+
   def destroy
     session[:favorites] = nil
     render :index
