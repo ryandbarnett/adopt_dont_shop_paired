@@ -6,8 +6,8 @@ class FavoritesController < ApplicationController
     else
       session[:favorites] = [params[:pet_id]]
     end
-    redirect_to "/pets/#{pet.id}"
     flash[:notice] = "#{pet.name} added to favorites"
+    redirect_to "/pets/#{pet.id}"
   end
 
   def index
@@ -23,7 +23,14 @@ class FavoritesController < ApplicationController
   end
   
   def destroy
-    session[:favorites] = nil
-    render :index
+    if params[:pet_id]
+      pet = Pet.find(params[:pet_id])
+      session[:favorites] = session[:favorites].delete(pet.id)
+      flash[:notice] = "#{pet.name} removed from favorites"
+      redirect_to "/pets/#{pet.id}"
+    else
+      session[:favorites] = nil
+      render :index
+    end
   end
 end

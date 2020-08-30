@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'As a visitor' do
-  describe 'When I visit a pet show page' do
+  describe 'when I visit a pet show page' do
     before :each do
       @shelter_1 = Shelter.create!(
         name: 'FurBabies4Ever',
@@ -111,21 +111,80 @@ RSpec.describe 'As a visitor' do
         click_button 'Add to favorites'
 
         expect(current_path).to eq("/pets/#{@pet_1.id}")
-        expect(page).to have_content("Rufus added to favorites")
+        expect(page).to have_content('Rufus added to favorites')
 
         within('.menu') do
           expect(page).to have_content('Favorite Pet Count: 1')
         end
       end
 
-      it 'if I already favorited this pet I should NOT see the link to favorite that pet' do
+      it 'I should NOT see the link to favorite that pet' do
         visit "/pets/#{@pet_1.id}"
 
         click_button 'Add to favorites'
 
         expect(current_path).to eq("/pets/#{@pet_1.id}")
-        
+
         expect(page).to_not have_button('Add to favorites')
+      end
+
+      it 'I can see a link to remove that pet from my favorites' do
+        visit "/pets/#{@pet_1.id}"
+
+        click_button 'Add to favorites'
+
+        expect(current_path).to eq("/pets/#{@pet_1.id}")
+
+        expect(page).to have_button('Remove from favorites')
+      end
+
+      describe 'when I click the button to remove that pet from my favorites' do
+        it 'I am redirected to the pet show page' do
+          visit "/pets/#{@pet_1.id}"
+
+          click_button 'Add to favorites'
+
+          click_button 'Remove from favorites'
+
+          expect(current_path).to eq("/pets/#{@pet_1.id}")
+        end
+
+        it 'I can see a flash message indicating that the pet was removed from my favorites' do
+          visit "/pets/#{@pet_1.id}"
+
+          click_button 'Add to favorites'
+
+          click_button 'Remove from favorites'
+
+          expect(page).to have_content('Rufus removed from favorites')
+        end
+
+        it 'I can see a link to add that pet to my favorites' do
+          visit "/pets/#{@pet_1.id}"
+
+          click_button 'Add to favorites'
+
+          click_button 'Remove from favorites'
+
+          expect(page).to have_button('Add to favorites')
+        end
+
+        it 'I can see that my favorites indicator has decremented by 1' do
+          visit "/pets/#{@pet_1.id}"
+
+          click_button 'Add to favorites'
+
+          within('.menu') do
+            expect(page).to have_content('Favorite Pet Count: 1')
+          end
+
+          click_button 'Remove from favorites'
+
+          within('.menu') do
+            save_and_open_page
+            expect(page).to have_content('Favorite Pet Count: 0')
+          end
+        end
       end
     end
   end
