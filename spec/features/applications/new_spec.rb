@@ -138,5 +138,32 @@ RSpec.describe "As a visitor" do
         end
       end
     end
+
+    describe "When I submit an application with an empty field" do
+      describe "I am redirected back to the application page" do
+        it "I see a flash message indicating the form must be completed" do
+
+          visit "/pets/#{@pet_1.id}"
+
+          click_button 'Add to favorites'
+
+          visit "/pets/#{@pet_2.id}"
+
+          click_button 'Add to favorites'
+
+          visit '/application'
+          check('Rufus')
+          fill_in 'Name', with: 'Phil'
+          fill_in 'Address', with: '55 whatever st'
+          fill_in 'City', with: 'Denver'
+          fill_in 'State', with: 'CO'
+          fill_in 'Zip', with: '33333'
+          fill_in 'Phone number', with: '3434343434'
+          click_button 'Submit application'
+          expect(current_path).to eq('/application')
+          expect(page).to have_content('Application not submitted, at least one pet must be selected and all fields completed.')
+        end
+      end
+    end
   end
 end
