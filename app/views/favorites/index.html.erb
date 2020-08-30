@@ -17,5 +17,9 @@
   <% end %>
 </section>
 <section id="pets-with-applications">
-
+  <% if @applied_pets %>
+    <% @applied_pets.each do |pet| %>
+      <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+    <% end %>
+  <% end %>
 </section>
