@@ -31,4 +31,6 @@ Rails.application.routes.draw do
   delete '/favorites/index/:pet_id', to: 'favorites#delete'
   get '/favorites', to: 'favorites#index'
 
+  get '/application', to: 'applications#new'
+  post '/application', to: 'applications#create'
 end
