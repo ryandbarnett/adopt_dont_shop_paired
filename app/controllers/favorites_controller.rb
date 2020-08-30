@@ -11,6 +11,8 @@ class FavoritesController < ApplicationController
   end
 
   def index
+    pet_ids = PetApplication.all.map { |application| application.pet_id }
+    @applied_pets = Pet.find(pet_ids)
     if session[:favorites]
       @favorite_pets = Pet.find(session[:favorites])
     end
