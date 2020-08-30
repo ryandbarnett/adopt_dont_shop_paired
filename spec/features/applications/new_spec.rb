@@ -110,7 +110,7 @@ RSpec.describe "As a visitor" do
       describe "I click on the submit application button" do
         describe "I'm taken back to my favorites page" do
           describe "I see a flash message indicating successful submission" do
-            it "I do see the pets I have applied for" do
+            it "I do see the pets I have not applied for" do
               visit "/pets/#{@pet_1.id}"
 
               click_button 'Add to favorites'
