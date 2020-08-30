@@ -43,6 +43,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'pry'
   gem 'shoulda-matchers', '~> 3.1'
+  gem "nyan-cat-formatter"
 end
 
 group :development do

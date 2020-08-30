@@ -181,7 +181,6 @@ RSpec.describe 'As a visitor' do
           click_button 'Remove from favorites'
 
           within('.menu') do
-            save_and_open_page
             expect(page).to have_content('Favorite Pet Count: 0')
           end
         end

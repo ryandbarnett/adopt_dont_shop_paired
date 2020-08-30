@@ -89,46 +89,62 @@ RSpec.describe 'As a visitor' do
     end
 
     it "I can see a button to remove favorite next to each pet name" do
-          visit "/pets/#{@pet_1.id}"
+      visit "/pets/#{@pet_1.id}"
 
-          click_button 'Add to favorites'
+      click_button 'Add to favorites'
 
-          visit "/pets/#{@pet_2.id}"
+      visit "/pets/#{@pet_2.id}"
 
-          click_button 'Add to favorites'
+      click_button 'Add to favorites'
 
-          visit "/favorites"
+      visit "/favorites"
 
-          within "#pet-#{@pet_1.id}" do
-            expect(page).to have_button("Remove from favorites")
-          end
+      within "#pet-#{@pet_1.id}" do
+        expect(page).to have_button("Remove from favorites")
+      end
 
-          within "#pet-#{@pet_2.id}" do
-            expect(page).to have_button("Remove from favorites")
-          end
+      within "#pet-#{@pet_2.id}" do
+        expect(page).to have_button("Remove from favorites")
+      end
     end
 
-    describe "when I click a remove favorite button" do
-      it "I no longer sees that favorite on the page" do
+    describe 'when I click a remove favorite button' do
+      it 'I no longer sees that favorite on the page' do
         visit "/pets/#{@pet_1.id}"
 
+        click_button 'Add to favorites'
+
+        visit '/favorites'
+        
+        click_button('Remove from favorites')
+
+        expect(page).to_not have_content("#{@pet_1.name}")
+      end
+
+      it 'the favorite pet indicator is decremented by 1' do
+        visit "/pets/#{@pet_1.id}"
 
         click_button 'Add to favorites'
 
-        visit "/pets/#{@pet_2.id}"
+        expect(page).to have_content('Favorite Pet Count: 1')
+
+        visit '/favorites'
+
+        click_button('Remove from favorites')
+
+        expect(page).to have_content('Favorite Pet Count: 0')
+      end
+
+      it 'I should see you have not favorited any pets yet if there are no more favorites' do
+        visit "/pets/#{@pet_1.id}"
 
         click_button 'Add to favorites'
 
-        visit "/favorites"
+        visit '/favorites'
 
-        all(:button, 'Remove from favorites')[0].click
+        click_button('Remove from favorites')
 
-        expect(page).to_not have_content("#{@pet_1.image}")
-        expect(page).to have_content("Favorite Pet Count: 1")
-
-        click_button 'Remove from favorites'
         expect(page).to have_content("You haven't favorited any pets yet.")
-        expect(page).to have_content("Favorite Pet Count: 0")
       end
     end
   end
