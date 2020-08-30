@@ -149,7 +149,6 @@ RSpec.describe 'As a visitor' do
 
       describe 'After one or more applications have been created' do
         it 'I see a section on the page that has a list of pet names links that have at least one application on them' do
-          # Add a favorite pet so can apply for it
           visit "/pets/#{@pet_1.id}"
 
           click_button 'Add to favorites'
@@ -157,7 +156,7 @@ RSpec.describe 'As a visitor' do
           visit "/pets/#{@pet_2.id}"
 
           click_button 'Add to favorites'
-          # Make an application for favorite pet
+          
           visit '/application'
 
           check('Rufus')
@@ -171,10 +170,7 @@ RSpec.describe 'As a visitor' do
           fill_in 'Description', with: 'some text'
           click_button 'Submit application'
 
-          # Since should be redirected to favorites index after submit
-          # Within pets with applications section
           within('#pets-with-applications') do
-            # Check for Rufus link
             expect(page).to have_link('Rufus')
           end
         end
