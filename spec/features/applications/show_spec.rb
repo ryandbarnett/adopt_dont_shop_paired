@@ -10,12 +10,11 @@ RSpec.describe 'As a visitor' do
         state: 'CO',
         zip: '80220'
       )
-      @pet = Pet.create!(
+      @pet = shelter.pets.create!(
         name: 'Rufus',
         sex: 'male',
         age: '3',
         image: 'https://www.washingtonpost.com/resizer/uwlkeOwC_3JqSUXeH8ZP81cHx3I=/arc-anglerfish-washpost-prod-washpost/public/HB4AT3D3IMI6TMPTWIZ74WAR54.jpg',
-        shelter_id: shelter.id,
         description: 'The cutest dog in the world. Adopt him now!'
       )
       application = Application.create!(
@@ -48,6 +47,34 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_link('Rufus')
       click_link 'Rufus'
       expect(current_path).to eq("/pets/#{@pet.id}")
+    end
+
+    describe 'For every pet that the application is for' do
+      it 'I see a link to approve the application for that specific pet' do
+        visit "/applications/#{@pet_application.id}"
+
+        within '.pets-on-application' do
+          expect(page).to have_link('Approve Application')
+        end
+      end
+
+      describe 'when I click on a link to approve the application for one particular pet' do
+        it "I'm taken back to that pet's show page" do
+          visit "/applications/#{@pet_application.id}"
+
+          click_link 'Approve Application'
+
+          expect(current_path).to eq("/pets/#{@pet.id}")
+        end
+
+        it "I see that the pets status has changed to 'pending'" do
+          visit "/applications/#{@pet_application.id}"
+
+          click_link 'Approve Application'
+
+          expect(page).to have_content("Adoptable Status: pending")
+        end
+      end
     end
   end
 end

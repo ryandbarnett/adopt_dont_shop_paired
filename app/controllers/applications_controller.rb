@@ -20,13 +20,19 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def index
+    @pet = Pet.find(params[:pet_id])
+    @pet_applications = PetApplication.where(pet_id: params[:pet_id])
+  end
+
   def show
     @pet_application = PetApplication.find(params[:id])
   end
 
-  def index
-    @pet = Pet.find(params[:pet_id])
-    @pet_applications = PetApplication.where(pet_id: params[:pet_id])
+  def update
+    pet_application = PetApplication.find(params[:id])
+    pet_application.pet.update(status: 'pending')
+    redirect_to "/pets/#{pet_application.pet.id}"
   end
 
   private
