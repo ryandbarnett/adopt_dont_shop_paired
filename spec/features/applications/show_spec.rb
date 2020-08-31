@@ -26,7 +26,17 @@ RSpec.describe 'As a visitor' do
         phone_number: '3434343434',
         description: 'some text'
       )
+      application_2 = Application.create!(
+        name: 'Ryan',
+        address: '33 different st',
+        city: 'Denver',
+        state: 'CO',
+        zip: '33333',
+        phone_number: '3434343434',
+        description: 'some text'
+      )
       @pet_application = PetApplication.create!(application: application, pet: @pet)
+      @pet_application_2= PetApplication.create!(application: application_2, pet: @pet)
     end
 
     it 'I can see the application name, address, city, state, zip, phone number, and description' do
@@ -73,6 +83,20 @@ RSpec.describe 'As a visitor' do
           click_link 'Approve Application'
 
           expect(page).to have_content("Adoptable Status: pending")
+        end
+
+        describe "When the pet already has an approved application" do
+          describe "And I try to approve another application" do
+            it "I see a flash message that no more applications can be approved" do
+              visit "/applications/#{@pet_application.id}"
+              click_link 'Approve Application'
+
+              visit "/applications/#{@pet_application_2.id}"
+              click_link 'Approve Application'
+
+              expect(page).to have_content('No more applications can be approved for this pet at this time')
+            end
+          end
         end
       end
     end
