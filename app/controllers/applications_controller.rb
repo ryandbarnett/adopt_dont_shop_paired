@@ -31,8 +31,13 @@ class ApplicationsController < ApplicationController
 
   def update
     pet_application = PetApplication.find(params[:id])
-    pet_application.pet.update(status: 'pending')
-    redirect_to "/pets/#{pet_application.pet.id}"
+    unless pet_application.pet.status == "pending"
+      pet_application.pet.update(status: 'pending')
+      redirect_to "/pets/#{pet_application.pet.id}"
+    else
+      flash[:notice] = 'No more applications can be approved for this pet at this time'
+      redirect_to "/pets/#{pet_application.pet.id}"
+    end
   end
 
   private
