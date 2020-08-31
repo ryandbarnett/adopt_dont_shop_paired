@@ -10,6 +10,7 @@
     <section class="pets-on-application">
     <% @pet_application.application.pets.each do |pet| %>
       <%= link_to pet.name, "/pets/#{pet.id}" %>
+      <%= link_to 'Approve Application', "/applications/#{@pet_application.id}", method: :patch%>
     <% end %>
   <section>
 </article>
