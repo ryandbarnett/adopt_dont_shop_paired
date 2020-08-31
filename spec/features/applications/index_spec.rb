@@ -18,6 +18,14 @@ RSpec.describe "As a visitor" do
       shelter_id: @shelter.id,
       description: 'The cutest dog in the world. Adopt him now!'
     )
+    @pet_2 = Pet.create!(
+      name: 'Snuggles',
+      sex: 'female',
+      age: '5',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg',
+      shelter_id: @shelter.id,
+      description: 'A lovable orange cat. Adopt her now!'
+    )
     @application_1 = Application.create!(
       name: 'Phil',
       address: '55 whatever st',
@@ -68,6 +76,16 @@ RSpec.describe "As a visitor" do
       expect(current_path).to eq("/applications/#{@pet_application_1.id}")
       expect(page).to have_content('Phil')
       expect(page).to have_content('55 whatever st')
+    end
+  end
+
+  describe 'When I visit a pets application index page' do
+    describe 'And there are no pending applications for the pet' do
+      it "I see a message saying there are no applications for the pet yet" do
+        visit "/applications/#{@pet_2.id}/index"
+
+        expect(page).to have_content('As of yet there are no applications pending for this pet')
+      end
     end
   end
 end
