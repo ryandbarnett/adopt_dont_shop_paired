@@ -6,7 +6,7 @@
 <p>Adoptable: <%= @pet.adoptable %></p>
 <%= link_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
 <%= link_to 'Update Pet', "/pets/#{@pet.id}/edit", method: :get %>
-
+<%= link_to 'View all applications', "/applications/#{@pet.id}/index" %>
 <% if session[:favorites] && session[:favorites].include?(@pet.id.to_s) %>
   <%= button_to 'Remove from favorites', "/favorites/#{@pet.id}", method: :delete %>
 <% else %>
