@@ -92,6 +92,7 @@ RSpec.describe 'As a visitor' do
               click_link 'Approve Application'
 
               visit "/applications/#{@pet_application_2.id}"
+              save_and_open_page
               click_link 'Approve Application'
 
               expect(page).to have_content('No more applications can be approved for this pet at this time')
@@ -123,6 +124,28 @@ RSpec.describe 'As a visitor' do
         all(:link, 'Approve Application').last.click
 
         expect(page).to have_content("Adoptable Status: pending")
+      end
+    end
+
+    describe 'after an application has been approved for a pet' do
+      it 'I no longer see a link to approve the application for that pet' do
+        visit "/applications/#{@pet_application.id}"
+
+        click_link 'Approve Application'
+
+        visit "/applications/#{@pet_application.id}"
+
+        expect(page).to_not have_link('Approve Application')
+      end
+
+      it 'I see a link to revoke the application for that pet' do
+        visit "/applications/#{@pet_application.id}"
+
+        click_link 'Approve Application'
+
+        visit "/applications/#{@pet_application.id}"
+
+        expect(page).to have_link('Revoke Application')
       end
     end
   end
