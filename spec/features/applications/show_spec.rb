@@ -92,7 +92,7 @@ RSpec.describe 'As a visitor' do
               click_link 'Approve Application'
 
               visit "/applications/#{@pet_application_2.id}"
-              save_and_open_page
+              
               click_link 'Approve Application'
 
               expect(page).to have_content('No more applications can be approved for this pet at this time')
