@@ -3,7 +3,7 @@
 <p>Gender: <%= @pet.sex %></p>
 <p>Age: <%= @pet.age %></p>
 <p>Description: <%= @pet.description %></p>
-<p>Adoptable: <%= @pet.adoptable %></p>
+<p>Adoptable Status: <%= @pet.status %></p>
 <%= link_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
 <%= link_to 'Update Pet', "/pets/#{@pet.id}/edit", method: :get %>
 
