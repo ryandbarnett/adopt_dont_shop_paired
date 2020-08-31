@@ -59,7 +59,7 @@ RSpec.describe 'As a visitor' do
     it 'I can see the pet adoptable status' do
       visit "/pets/#{@pet_1.id}"
 
-      expect(page).to have_content("Adoptable: #{@pet_1.adoptable}")
+      expect(page).to have_content("Adoptable Status: adoptable")
     end
 
     it 'I can see the pet image' do
