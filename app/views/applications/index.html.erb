@@ -1,5 +1,9 @@
-<header><h2 class='page-title'> <%= "Pending Applications for #{@pet_applications[0].pet.name}" %></h2></header>
+<header><h2 class='page-title'> <%= "Pending Applications for #{@pet.name}" %></h2></header>
 
-<% @pet_applications.each do |pet_application| %>
-  <%= link_to "#{pet_application.application.name}", "/applications/#{pet_application.id}" %>
+<% if @pet_applications.empty? %>
+  <%= 'As of yet there are no applications pending for this pet' %>
+  <% else %>
+  <% @pet_applications.each do |pet_application| %>
+    <%= link_to "#{pet_application.application.name}", "/applications/#{pet_application.id}" %>
+  <% end %>
 <% end %>
