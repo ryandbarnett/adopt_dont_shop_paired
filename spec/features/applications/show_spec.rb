@@ -36,7 +36,7 @@ RSpec.describe 'As a visitor' do
         description: 'some text'
       )
       @pet_application = PetApplication.create!(application: application, pet: @pet)
-      @pet_application_2= PetApplication.create!(application: application_2, pet: @pet)
+      @pet_application_2 = PetApplication.create!(application: application_2, pet: @pet)
     end
 
     it 'I can see the application name, address, city, state, zip, phone number, and description' do
