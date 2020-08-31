@@ -27,7 +27,6 @@ class ApplicationsController < ApplicationController
   def index
     @pet = Pet.find(params[:pet_id])
     @pet_applications = PetApplication.where(pet_id: params[:pet_id])
-    
   end
 
   private
