@@ -22,7 +22,7 @@ class SheltersController < ApplicationController
       shelter.delete_pets
       Shelter.destroy(params[:id])
       redirect_to '/shelters'
-    elsif
+    else
       flash[:notice] = 'A shelter with pets that have approved applications cannot be deleted'
       redirect_to "/shelters/#{shelter.id}"
     end
