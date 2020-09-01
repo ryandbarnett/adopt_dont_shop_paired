@@ -32,7 +32,7 @@ RSpec.describe "As a visitor" do
         click_on 'Create Pet'
 
         expect(current_path).to eq("/shelters/#{shelter_1.id}/pets/new")
-        expect(page).to have_content('Pet not created, you must fill in the following fields: name age gender')
+        expect(page).to have_content('Pet not created, you must fill in the following fields: name age sex')
       end
     end
   end
