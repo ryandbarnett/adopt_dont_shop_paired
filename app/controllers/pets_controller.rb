@@ -8,8 +8,13 @@ class PetsController < ApplicationController
   end
 
   def create
-    Pet.create(pet_params)
-    redirect_to "/shelters/#{params[:id]}/pets"
+    pet = Pet.new(pet_params)
+    if pet.save
+      redirect_to "/shelters/#{params[:id]}/pets"
+    else
+      flash[:notice] = "Pet not created, you must fill in the following fields: #{missing_pet_params}"
+      redirect_to "/shelters/#{params[:id]}/pets/new"
+    end
   end
 
   def show
@@ -39,5 +44,13 @@ class PetsController < ApplicationController
 
   def update_pet_params
     params.permit(:name, :age, :sex, :image, :description, :id, :shelter_id)
+  end
+
+  def missing_pet_params
+    expected_pet_keys = [:name, :age, :gender, :image, :description]
+    missing_params = expected_pet_keys.select do |param|
+      pet_params[param] == "" || pet_params[param] == nil
+    end
+    result = missing_params.join(' ')
   end
 end
