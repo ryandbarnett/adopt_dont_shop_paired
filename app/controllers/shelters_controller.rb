@@ -20,6 +20,7 @@ class SheltersController < ApplicationController
     shelter = Shelter.find(params[:id])
     unless shelter.applications_pending
       shelter.delete_pets
+      shelter.delete_reviews
       Shelter.destroy(params[:id])
       redirect_to '/shelters'
     else

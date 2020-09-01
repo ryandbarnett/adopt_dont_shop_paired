@@ -43,8 +43,44 @@ describe Shelter do
     expect(shelter_2.applications_pending).to eq(false)
   end
 
+  it "Can delete all reviews" do
+    shelter_1 = Shelter.create!(
+      name: 'FurBabies4Ever',
+      address: '1664 Poplar St',
+      city: 'Denver',
+      state: 'CO',
+      zip: '80220'
+    )
+
+    shelter_1.reviews.create!(
+      title: "Great Shelter!",
+      rating: 5,
+      content: "Has a lot of cats.",
+      image: "catshelter1.jpeg"
+    )
+
+    shelter_1.reviews.create!(
+      title: "Crappy Shelter!",
+      rating: 1,
+      content: "Not enough cats!",
+      image: "catshelter2.jpeg"
+    )
+
+    expect(shelter_1.reviews.count).to eq(2)
+
+    shelter_1.delete_reviews
+
+    expect(shelter_1.reviews.empty?).to eq(true)
+  end
+
   it "Can delete all pets" do
-    shelter_1 = Shelter.create!(name: 'FurBabies4Ever', address: '1664 Poplar St', city: 'Denver', state: 'CO', zip: '80220')
+    shelter_1 = Shelter.create!(
+      name: 'FurBabies4Ever',
+      address: '1664 Poplar St',
+      city: 'Denver',
+      state: 'CO',
+      zip: '80220'
+    )
 
     pet_1 = shelter_1.pets.create!(
       name: 'Rufus',

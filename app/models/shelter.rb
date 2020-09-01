@@ -12,6 +12,10 @@ class Shelter < ApplicationRecord
     end
   end
 
+  def delete_reviews
+    self.reviews.destroy_all
+  end
+
   def delete_pets
     self.pets.destroy_all
  end
