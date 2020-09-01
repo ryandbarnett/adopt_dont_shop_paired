@@ -100,6 +100,41 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content('Total Pets At Shelter: 1')
     end
 
+    it 'I can see the number of applications on file for that shelter' do
+      pet_1 = @shelter_1.pets.create!(
+        name: 'Rufus',
+        sex: 'male',
+        age: '3',
+        image: 'https://www.washingtonpost.com/resizer/uwlkeOwC_3JqSUXeH8ZP81cHx3I=/arc-anglerfish-washpost-prod-washpost/public/HB4AT3D3IMI6TMPTWIZ74WAR54.jpg',
+        description: 'The cutest dog in the world. Adopt him now!',
+        status: 'pending'
+      )
+
+      pet_2 = @shelter_1.pets.create!(
+        name: 'Snuggles',
+        sex: 'female',
+        age: '5',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg',
+        description: 'A lovable orange cat. Adopt her now!'
+      )
+
+      application = Application.create!(
+        name: 'Phil',
+        address: '55 whatever st',
+        city: 'Denver',
+        state: 'CO',
+        zip: '33333',
+        phone_number: '3434343434',
+        description: 'some text'
+      )
+      PetApplication.create!(application: application, pet: pet_1)
+      PetApplication.create!(application: application, pet: pet_2)
+
+      visit "/shelters/#{@shelter_1.id}"
+
+      expect(page).to have_content("Total Pet Applications: 1")
+    end
+
     it 'I can see the average shelter review rating' do
       visit "/shelters/#{@shelter_1.id}"
 
