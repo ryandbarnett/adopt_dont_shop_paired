@@ -23,7 +23,7 @@ RSpec.describe 'as a visitor' do
         age: '3',
         image: 'https://www.washingtonpost.com/resizer/uwlkeOwC_3JqSUXeH8ZP81cHx3I=/arc-anglerfish-washpost-prod-washpost/public/HB4AT3D3IMI6TMPTWIZ74WAR54.jpg',
         shelter_id: @shelter_1.id,
-        description: 'The cutest dog in the world. Adopt him now!'
+        description: 'The cutest dog in the world. Adopt him now!',
       )
       @pet_2 = Pet.create!(
         name: 'Snuggles',
@@ -31,7 +31,8 @@ RSpec.describe 'as a visitor' do
         age: '5',
         image: 'https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg',
         shelter_id: @shelter_2.id,
-        description: 'A lovable orange cat. Adopt her now!'
+        description: 'A lovable orange cat. Adopt her now!',
+        status: 'pending'
       )
     end
 
@@ -162,6 +163,18 @@ RSpec.describe 'as a visitor' do
         click_link 'Create Pet'
 
         expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets/new")
+      end
+
+      describe "When I click to delete a pet that has an approved application" do
+        it "I see a flash message stating pet cannot be deleted" do
+          @pet_1.update(status: 'pending')
+
+          visit "/pets"
+
+          all(:link, 'Delete Pet')[0].click
+          expect(current_path).to eq("/pets")
+          expect(page).to have_content('Cannot delete a pet that has an approved application')
+        end
       end
     end
   end
