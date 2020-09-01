@@ -160,7 +160,8 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content(review_2.title)
     end
 
-    it "I cannot delete a shelter if it has pets with approved applications" do
+    describe "If I try to delete a shelter that has pets with approved applications " do
+      it "I see a flash message indicating the deletion failed" do
       pet_1 = @shelter_1.pets.create!(
         name: 'Rufus',
         sex: 'male',
@@ -182,6 +183,7 @@ RSpec.describe 'As a visitor' do
 
       expect(current_path).to eq("/shelters/#{@shelter_1.id}")
       expect(page).to have_content('A shelter with pets that have approved applications cannot be deleted')
+      end
     end
   end
 end
