@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Shelter do
   before :each do
     @shelter_1 = Shelter.create!(name: 'FurBabies4Ever', address: '1664 Poplar St', city: 'Denver', state: 'CO', zip: '80220')
-    @shelter_1.pets.create!(
+    pet = @shelter_1.pets.create!(
       name: 'Rufus',
       sex: 'male',
       age: '3',
@@ -30,6 +30,16 @@ describe Shelter do
       content: "Not enough cats!",
       image: "catshelter2.jpeg"
     )
+    application = Application.create!(
+      name: 'Phil',
+      address: '55 whatever st',
+      city: 'Denver',
+      state: 'CO',
+      zip: '33333',
+      phone_number: '3434343434',
+      description: 'some text'
+    )
+    PetApplication.create!(application: application, pet: pet)
   end
 
   describe 'relationships' do
@@ -71,5 +81,9 @@ describe Shelter do
 
   it "Can average the review ratings" do
     expect(@shelter_1.avg_review_rating).to eq(3)
+  end
+
+  it "Can get the total number of applications" do
+    expect(@shelter_1.application_count).to eq(1)
   end
 end
