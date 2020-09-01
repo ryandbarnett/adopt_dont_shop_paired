@@ -39,8 +39,8 @@ describe Shelter do
       image: 'https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg',
       description: 'A lovable orange cat. Adopt her now!'
     )
-    expect(shelter_1.check_applications).to eq(true)
-    expect(shelter_2.check_applications).to eq(false)
+    expect(shelter_1.applications_pending).to eq(true)
+    expect(shelter_2.applications_pending).to eq(false)
   end
 
   it "Can delete all pets" do
