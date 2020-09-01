@@ -17,6 +17,9 @@ class Shelter < ApplicationRecord
   end
 
   def delete_pets
+    self.pets.each do |pet|
+      pet.pet_applications.destroy_all
+    end
     self.pets.destroy_all
   end
 
@@ -30,5 +33,16 @@ class Shelter < ApplicationRecord
     else
       0
     end
+  end
+
+  def application_count
+    return self.pets.reduce([]) do |applications, pet|
+      pet.applications.each do |application|
+        unless applications.include? application
+          applications << application
+        end
+      end
+      applications
+    end.count
   end
 end
