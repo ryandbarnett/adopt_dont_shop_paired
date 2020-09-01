@@ -4,7 +4,7 @@ class Shelter < ApplicationRecord
 
   validates_presence_of :name, :address, :city, :state, :zip
 
-  def check_applications
+  def applications_pending
     if self.pets.where(status: 'pending').any?
       true
     else
