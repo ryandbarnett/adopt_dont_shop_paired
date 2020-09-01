@@ -27,12 +27,17 @@ class PetsController < ApplicationController
   end
 
   def edit
-
+    @pet = Pet.find(params[:id])
   end
 
   def update
-    Pet.update(params[:id], update_pet_params)
-    redirect_to "/pets/#{params[:id]}"
+    pet = Pet.find(params[:id])
+    if pet.update(update_pet_params)
+      redirect_to "/pets/#{params[:id]}"
+    else
+      flash[:notice] = "Pet not updated, you must fill in the following fields: #{missing_pet_params}"
+      redirect_to "/pets/#{params[:id]}/edit"
+    end
   end
 
   private
@@ -47,7 +52,7 @@ class PetsController < ApplicationController
   end
 
   def missing_pet_params
-    expected_pet_keys = [:name, :age, :gender, :image, :description]
+    expected_pet_keys = [:name, :age, :sex, :image, :description]
     missing_params = expected_pet_keys.select do |param|
       pet_params[param] == "" || pet_params[param] == nil
     end
