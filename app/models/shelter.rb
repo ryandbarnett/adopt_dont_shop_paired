@@ -18,5 +18,9 @@ class Shelter < ApplicationRecord
 
   def delete_pets
     self.pets.destroy_all
- end
+  end
+
+  def pet_count
+    self.pets.count
+  end
 end
