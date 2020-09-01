@@ -23,4 +23,12 @@ class Shelter < ApplicationRecord
   def pet_count
     self.pets.count
   end
+
+  def avg_review_rating
+    if self.reviews.count > 0
+      self.reviews.sum(:rating).to_f / self.reviews.count
+    else
+      0
+    end
+  end
 end
