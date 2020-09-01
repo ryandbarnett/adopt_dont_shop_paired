@@ -168,7 +168,6 @@ RSpec.describe 'as a visitor' do
       describe "When I click to delete a pet that has an approved application" do
         it "I see a flash message stating pet cannot be deleted" do
           @pet_1.update(status: 'pending')
-
           visit "/pets"
 
           all(:link, 'Delete Pet')[0].click
