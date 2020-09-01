@@ -40,7 +40,7 @@ RSpec.describe 'As a visitor' do
     end
 
     it 'I can see the application name, address, city, state, zip, phone number, and description' do
-      visit "/applications/#{@pet_application.id}"
+      visit "/applications/#{@application.id}"
 
       expect(page).to have_content('Name: Phil')
       expect(page).to have_content('Address: 55 whatever st')
@@ -52,7 +52,7 @@ RSpec.describe 'As a visitor' do
     end
 
     it "I can see names (links to pet show) of all the pet's this application is for" do
-      visit "/applications/#{@pet_application.id}"
+      visit "/applications/#{@application.id}"
 
       expect(page).to have_link('Rufus')
       click_link 'Rufus'
@@ -61,7 +61,7 @@ RSpec.describe 'As a visitor' do
 
     describe 'for every pet that the application is for' do
       it 'I see a link to approve the application for that specific pet' do
-        visit "/applications/#{@pet_application.id}"
+        visit "/applications/#{@application.id}"
 
         within '.pets-on-application' do
           expect(page).to have_link('Approve Application')
@@ -70,7 +70,7 @@ RSpec.describe 'As a visitor' do
 
       describe 'when I click on a link to approve the application for one particular pet' do
         it "I'm taken back to that pet's show page" do
-          visit "/applications/#{@pet_application.id}"
+          visit "/applications/#{@application.id}"
 
           click_link 'Approve Application'
 
@@ -78,7 +78,7 @@ RSpec.describe 'As a visitor' do
         end
 
         it "I see that the pets status has changed to 'pending'" do
-          visit "/applications/#{@pet_application.id}"
+          visit "/applications/#{@application.id}"
 
           click_link 'Approve Application'
 
@@ -89,10 +89,10 @@ RSpec.describe 'As a visitor' do
           describe "And I try to approve another application" do
             it "I see a flash message that no more applications can be approved" do
               skip
-              visit "/applications/#{@pet_application.id}"
+              visit "/applications/#{@application.id}"
               click_link 'Approve Application'
 
-              visit "/applications/#{@pet_application_2.id}"
+              visit "/applications/#{@application_2.id}"
 
               click_link 'Approve Application'
 
@@ -114,13 +114,13 @@ RSpec.describe 'As a visitor' do
         )
         pet_application_2 = PetApplication.create!(application: @application, pet: pet_2)
 
-        visit "/applications/#{@pet_application.id}"
+        visit "/applications/#{@application.id}"
 
         all(:link, 'Approve Application')[0].click
 
         expect(page).to have_content("Adoptable Status: pending")
 
-        visit "/applications/#{@pet_application.id}"
+        visit "/applications/#{@application.id}"
 
         all(:link, 'Approve Application').last.click
 
@@ -130,44 +130,44 @@ RSpec.describe 'As a visitor' do
 
     describe 'after an application has been approved for a pet' do
       it 'I no longer see a link to approve the application for that pet' do
-        visit "/applications/#{@pet_application.id}"
+        visit "/applications/#{@application.id}"
 
         click_link 'Approve Application'
 
-        visit "/applications/#{@pet_application.id}"
+        visit "/applications/#{@application.id}"
 
         expect(page).to_not have_link('Approve Application')
       end
 
       it 'I see a link to revoke the application for that pet' do
-        visit "/applications/#{@pet_application.id}"
+        visit "/applications/#{@application.id}"
 
         click_link 'Approve Application'
 
-        visit "/applications/#{@pet_application.id}"
+        visit "/applications/#{@application.id}"
 
         expect(page).to have_link('Revoke Application')
       end
 
       describe 'when I click on the link to unapprove the application' do
         it "I'm taken back to that applications show page" do
-          visit "/applications/#{@pet_application.id}"
+          visit "/applications/#{@application.id}"
 
           click_link 'Approve Application'
 
-          visit "/applications/#{@pet_application.id}"
+          visit "/applications/#{@application.id}"
 
           click_link 'Revoke Application'
 
-          expect(current_path).to eq("/applications/#{@pet_application.id}")
+          expect(current_path).to eq("/applications/#{@application.id}")
         end
 
         it 'I can see the button to approve the application for that pet again' do
-          visit "/applications/#{@pet_application.id}"
+          visit "/applications/#{@application.id}"
 
           click_link 'Approve Application'
 
-          visit "/applications/#{@pet_application.id}"
+          visit "/applications/#{@application.id}"
 
           click_link 'Revoke Application'
 
@@ -176,11 +176,11 @@ RSpec.describe 'As a visitor' do
 
         describe 'when I go to that pets show page' do
           it 'I can see that the pets adoption status is now back to adoptable' do
-            visit "/applications/#{@pet_application.id}"
+            visit "/applications/#{@application.id}"
 
             click_link 'Approve Application'
 
-            visit "/applications/#{@pet_application.id}"
+            visit "/applications/#{@application.id}"
 
             click_link 'Revoke Application'
 

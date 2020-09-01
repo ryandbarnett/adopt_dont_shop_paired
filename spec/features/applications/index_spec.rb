@@ -73,7 +73,7 @@ RSpec.describe "As a visitor" do
 
       click_link('Phil')
 
-      expect(current_path).to eq("/applications/#{@pet_application_1.id}")
+      expect(current_path).to eq("/applications/#{@application_1.id}")
       expect(page).to have_content('Phil')
       expect(page).to have_content('55 whatever st')
     end

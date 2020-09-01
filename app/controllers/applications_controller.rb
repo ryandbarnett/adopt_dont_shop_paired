@@ -23,18 +23,18 @@ class ApplicationsController < ApplicationController
   end
 
   def show
-    @pet_application = PetApplication.find(params[:id])
+    @application = Application.find(params[:id])
   end
 
   def update
-    pet_application = PetApplication.where(pet: params[:pet_id].to_i, application: params[:application_id].to_i).first
-    unless pet_application.pet.status == "pending"
-      pet_application.pet.update(status: 'pending')
-      redirect_to "/pets/#{pet_application.pet.id}"
+    pet = Pet.find(params[:pet_id])
+    if pet.status == "adoptable"
+      pet.update(status: 'pending')
+      redirect_to "/pets/#{pet.id}"
     else
-      pet_application.pet.update(status: 'adoptable')
+      pet.update(status: 'adoptable')
       # flash[:notice] = 'No more applications can be approved for this pet at this time'
-      redirect_to "/applications/#{pet_application.id}"
+      redirect_to "/applications/#{params[:application_id]}"
     end
   end
 
