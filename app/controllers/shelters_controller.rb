@@ -12,8 +12,13 @@ class SheltersController < ApplicationController
   end
 
   def create
-    Shelter.create(shelter_params)
-    redirect_to '/shelters'
+    shelter = Shelter.new(shelter_params)
+    if shelter.save
+      redirect_to '/shelters'
+    else
+      flash[:notice] = 'Shelter not created, form must have no empty fields'
+      redirect_to '/shelters/new'
+    end
   end
 
   def destroy
