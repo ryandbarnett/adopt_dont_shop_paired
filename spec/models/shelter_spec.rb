@@ -42,4 +42,27 @@ describe Shelter do
     expect(shelter_1.check_applications).to eq(true)
     expect(shelter_2.check_applications).to eq(false)
   end
+
+  it "Can delete all pets" do
+    shelter_1 = Shelter.create!(name: 'FurBabies4Ever', address: '1664 Poplar St', city: 'Denver', state: 'CO', zip: '80220')
+
+    pet_1 = shelter_1.pets.create!(
+      name: 'Rufus',
+      sex: 'male',
+      age: '3',
+      image: 'https://www.washingtonpost.com/resizer/uwlkeOwC_3JqSUXeH8ZP81cHx3I=/arc-anglerfish-washpost-prod-washpost/public/HB4AT3D3IMI6TMPTWIZ74WAR54.jpg',
+      description: 'The cutest dog in the world. Adopt him now!',
+      status: 'pending'
+    )
+    pet_2 = shelter_1.pets.create!(
+      name: 'Snuggles',
+      sex: 'female',
+      age: '5',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg',
+      description: 'A lovable orange cat. Adopt her now!'
+    )
+
+    shelter_1.delete_pets
+    expect(shelter_1.pets.empty?).to eq(true)
+  end
 end
