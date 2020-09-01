@@ -17,6 +17,32 @@ class Shelter < ApplicationRecord
   end
 
   def delete_pets
+    self.pets.each do |pet|
+      pet.pet_applications.destroy_all
+    end
     self.pets.destroy_all
- end
+  end
+
+  def pet_count
+    self.pets.count
+  end
+
+  def avg_review_rating
+    if self.reviews.count > 0
+      self.reviews.sum(:rating).to_f / self.reviews.count
+    else
+      0
+    end
+  end
+
+  def application_count
+    return self.pets.reduce([]) do |applications, pet|
+      pet.applications.each do |application|
+        unless applications.include? application
+          applications << application
+        end
+      end
+      applications
+    end.count
+  end
 end
