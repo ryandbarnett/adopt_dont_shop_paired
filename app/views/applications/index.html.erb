@@ -2,8 +2,8 @@
 
 <% if @pet_applications.empty? %>
   <%= 'As of yet there are no applications pending for this pet' %>
-  <% else %>
+<% else %>
   <% @pet_applications.each do |pet_application| %>
-    <%= link_to "#{pet_application.application.name}", "/applications/#{pet_application.id}" %>
+    <%= link_to "#{pet_application.application.name}", "/applications/#{pet_application.application_id}" %>
   <% end %>
 <% end %>
