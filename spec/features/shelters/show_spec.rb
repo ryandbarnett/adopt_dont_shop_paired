@@ -159,5 +159,31 @@ RSpec.describe 'As a visitor' do
       expect(page).to_not have_content(review_1.attributes.values)
       expect(page).to have_content(review_2.title)
     end
+
+    describe "If I try to delete a shelter that has pets with approved applications " do
+      it "I see a flash message indicating the deletion failed" do
+      pet_1 = @shelter_1.pets.create!(
+        name: 'Rufus',
+        sex: 'male',
+        age: '3',
+        image: 'https://www.washingtonpost.com/resizer/uwlkeOwC_3JqSUXeH8ZP81cHx3I=/arc-anglerfish-washpost-prod-washpost/public/HB4AT3D3IMI6TMPTWIZ74WAR54.jpg',
+        description: 'The cutest dog in the world. Adopt him now!',
+        status: 'pending'
+      )
+      pet_2 = @shelter_1.pets.create!(
+        name: 'Snuggles',
+        sex: 'female',
+        age: '5',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg',
+        description: 'A lovable orange cat. Adopt her now!'
+      )
+      visit "/shelters/#{@shelter_1.id}"
+
+      click_link 'Delete Shelter'
+
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+      expect(page).to have_content('A shelter with pets that have approved applications cannot be deleted')
+      end
+    end
   end
 end
