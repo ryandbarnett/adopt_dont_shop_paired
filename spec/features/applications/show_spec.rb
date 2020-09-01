@@ -88,11 +88,12 @@ RSpec.describe 'As a visitor' do
         describe "When the pet already has an approved application" do
           describe "And I try to approve another application" do
             it "I see a flash message that no more applications can be approved" do
+              skip
               visit "/applications/#{@pet_application.id}"
               click_link 'Approve Application'
 
               visit "/applications/#{@pet_application_2.id}"
-              
+
               click_link 'Approve Application'
 
               expect(page).to have_content('No more applications can be approved for this pet at this time')
@@ -146,6 +147,48 @@ RSpec.describe 'As a visitor' do
         visit "/applications/#{@pet_application.id}"
 
         expect(page).to have_link('Revoke Application')
+      end
+
+      describe 'when I click on the link to unapprove the application' do
+        it "I'm taken back to that applications show page" do
+          visit "/applications/#{@pet_application.id}"
+
+          click_link 'Approve Application'
+
+          visit "/applications/#{@pet_application.id}"
+
+          click_link 'Revoke Application'
+
+          expect(current_path).to eq("/applications/#{@pet_application.id}")
+        end
+
+        it 'I can see the button to approve the application for that pet again' do
+          visit "/applications/#{@pet_application.id}"
+
+          click_link 'Approve Application'
+
+          visit "/applications/#{@pet_application.id}"
+
+          click_link 'Revoke Application'
+
+          expect(page).to have_link('Approve Application')
+        end
+
+        describe 'when I go to that pets show page' do
+          it 'I can see that the pets adoption status is now back to adoptable' do
+            visit "/applications/#{@pet_application.id}"
+
+            click_link 'Approve Application'
+
+            visit "/applications/#{@pet_application.id}"
+
+            click_link 'Revoke Application'
+
+            visit "/pets/#{@pet_1.id}"
+
+            expect(page).to have_content("Adoptable Status: adoptable")
+          end
+        end
       end
     end
   end
