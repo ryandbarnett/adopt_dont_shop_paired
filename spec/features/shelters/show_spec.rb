@@ -85,6 +85,21 @@ RSpec.describe 'As a visitor' do
       expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets")
     end
 
+    it 'I can see a count of pets that are at that shelter' do
+      @shelter_1.pets.create!(
+        name: 'Rufus',
+        sex: 'male',
+        age: '3',
+        image: 'https://www.washingtonpost.com/resizer/uwlkeOwC_3JqSUXeH8ZP81cHx3I=/arc-anglerfish-washpost-prod-washpost/public/HB4AT3D3IMI6TMPTWIZ74WAR54.jpg',
+        description: 'The cutest dog in the world. Adopt him now!',
+        status: 'pending'
+      )
+
+      visit "/shelters/#{@shelter_1.id}"
+
+      expect(page).to have_content('Total Pets At Shelter: 1')
+    end
+
 
     it 'I can see links to edit reviews next to each review' do
       review_1 = @shelter_1.reviews.create!(
