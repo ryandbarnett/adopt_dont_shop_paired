@@ -68,4 +68,8 @@ describe Shelter do
   it "Can count all pets" do
     expect(@shelter_1.pet_count).to eq(2)
   end
+
+  it "Can average the review ratings" do
+    expect(@shelter_1.avg_review_rating).to eq(3)
+  end
 end
