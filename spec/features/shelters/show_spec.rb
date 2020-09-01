@@ -100,6 +100,40 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content('Total Pets At Shelter: 1')
     end
 
+    it 'I can see the average shelter review rating' do
+      visit "/shelters/#{@shelter_1.id}"
+
+      expect(page).to have_content("Average Review Rating: 0")
+
+      @shelter_1.reviews.create!(
+        title: "Great Shelter!",
+        rating: 5,
+        content: "Has a lot of cats.",
+        image: "catshelter1.jpeg"
+      )
+      @shelter_1.reviews.create!(
+        title: "Crappy Shelter!",
+        rating: 1,
+        content: "Not enough cats!",
+        image: "catshelter2.jpeg"
+      )
+
+      visit "/shelters/#{@shelter_1.id}"
+
+      expect(page).to have_content("Average Review Rating: 3")
+
+      @shelter_1.reviews.create!(
+        title: "Good Shelter!",
+        rating: 4,
+        content: "Some cats",
+        image: "catshelter3.jpeg"
+      )
+
+      visit "/shelters/#{@shelter_1.id}"
+
+      expect(page).to have_content("Average Review Rating: 3.33")
+      expect(page).to_not have_content("Average Review Rating: 3.333")
+    end
 
     it 'I can see links to edit reviews next to each review' do
       review_1 = @shelter_1.reviews.create!(
