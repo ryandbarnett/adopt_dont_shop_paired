@@ -25,6 +25,9 @@ class PetsController < ApplicationController
     pet = Pet.find(params[:id])
     unless pet.status == "pending"
       Pet.destroy(params[:id])
+      if session[:favorites] && session[:favorites].include?(pet.id.to_s)
+        session[:favorites].delete(pet.id.to_s)
+      end
       redirect_to '/pets'
     else
       flash[:notice] = 'Cannot delete a pet that has an approved application'

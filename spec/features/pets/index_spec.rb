@@ -164,16 +164,30 @@ RSpec.describe 'as a visitor' do
 
         expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets/new")
       end
+    end
 
-      describe "When I click to delete a pet that has an approved application" do
-        it "I see a flash message stating pet cannot be deleted" do
-          @pet_1.update(status: 'pending')
-          visit "/pets"
+    describe "When I click to delete a pet that has an approved application" do
+      it "I see a flash message stating pet cannot be deleted" do
+        @pet_1.update(status: 'pending')
+        visit "/pets"
 
-          all(:link, 'Delete Pet')[0].click
-          expect(current_path).to eq("/pets")
-          expect(page).to have_content('Cannot delete a pet that has an approved application')
-        end
+        all(:link, 'Delete Pet')[0].click
+        expect(current_path).to eq("/pets")
+        expect(page).to have_content('Cannot delete a pet that has an approved application')
+      end
+    end
+
+    describe "When I delete any pet" do
+      it "If that pet was in my favorites it is removed from my favorites" do
+        visit "/pets/#{@pet_1.id}"
+
+        click_button 'Add to favorites'
+
+        visit "/pets"
+
+        all(:link, 'Delete Pet')[0].click
+        visit "/favorites"
+        expect(page).to_not have_content(@pet_1.name)
       end
     end
   end
