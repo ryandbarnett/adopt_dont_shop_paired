@@ -33,7 +33,6 @@ class ApplicationsController < ApplicationController
       redirect_to "/pets/#{pet.id}"
     else
       pet.update(status: 'adoptable')
-      # flash[:notice] = 'No more applications can be approved for this pet at this time'
       redirect_to "/applications/#{params[:application_id]}"
     end
   end
