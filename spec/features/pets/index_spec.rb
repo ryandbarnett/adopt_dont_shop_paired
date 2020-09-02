@@ -190,5 +190,19 @@ RSpec.describe 'as a visitor' do
         expect(page).to_not have_content(@pet_1.name)
       end
     end
+
+    describe "Every pet's shelter name is a link" do
+      describe "when I click a shelters name on the pets index page" do
+        it "I am taken to that shelters show page" do
+        visit "/pets"
+
+        expect(page).to have_link('FurBabies4Ever')
+        expect(page).to have_link('PuppyLove')
+
+        click_link('FurBabies4Ever')
+        expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+        end
+      end
+    end
   end
 end
