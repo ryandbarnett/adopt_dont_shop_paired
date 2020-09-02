@@ -1,4 +1,4 @@
-<header><h2 class='page-title'><%= @shelter.name %> Pets</h2></header>
+<header><h2 class='page-title'><%= link_to "#{@shelter.name}", "/shelters/#{@shelter.id}"%> Pets</h2></header>
 <section class='cards-container'>
   <% @shelter.pets.each do |pet| %>
     <article id="pet-<%= pet.id %>" class='pet card'>
