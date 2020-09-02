@@ -1,4 +1,4 @@
-<h2><%= @shelter.name %></h2>
+<h2><%= link_to "#{@shelter.name}", "/shelters/#{@shelter.id}" %></h2>
 <p>Address: <%= "#{@shelter.address}, #{@shelter.city}, #{@shelter.state}, #{@shelter.zip}" %></p>
 <p>Total Pets At Shelter: <%= @shelter.pet_count %></p>
 <p>Average Review Rating: <%= @shelter.avg_review_rating.round(2) %></p>

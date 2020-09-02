@@ -51,4 +51,15 @@ RSpec.describe 'As a visitor' do
     expect(page).to have_content("Review not created: Reviews must have a title, rating, and content")
     expect(page).to have_button('Submit Review')
   end
+
+  describe "The name of the shelter on the new review page" do
+    it "Is a link that when clicked takes me to that shelter's show page" do
+      visit "/shelters/#{@shelter_1.id}/reviews/new"
+      
+      expect(page).to have_link('LottaCats')
+
+      click_link('LottaCats')
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+    end
+  end
 end

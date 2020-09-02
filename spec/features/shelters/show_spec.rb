@@ -303,6 +303,28 @@ RSpec.describe 'As a visitor' do
           end
         end
       end
+
+      describe "The name of the shelter on its show page" do
+        it "Is a link that when clicked takes me back to the shelter show page" do
+          visit "/shelters/#{@shelter_1.id}"
+
+          expect(page).to have_link('FurBabies4Ever')
+
+          click_link('FurBabies4Ever')
+          expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+        end
+      end
+
+      describe "The name of the shelter on its pets page" do
+        it "Is a link that when clicked takes me back to the shelter show page" do
+          visit "/shelters/#{@shelter_1.id}/pets"
+
+          expect(page).to have_link('FurBabies4Ever')
+
+          click_link('FurBabies4Ever')
+          expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+        end
+      end
     end
   end
 end
