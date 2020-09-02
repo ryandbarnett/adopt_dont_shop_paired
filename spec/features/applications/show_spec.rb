@@ -189,6 +189,16 @@ RSpec.describe 'As a visitor' do
             expect(page).to have_content("Adoptable Status: adoptable")
           end
         end
+
+        describe "I see the applicant's name as a link" do
+          it "When I click the link it takes me to the application show page" do
+            visit "/applications/#{@application.id}"
+
+            expect(page).to have_link('Phil')
+            click_link 'Phil'
+            expect(current_path).to eq("/applications/#{@application.id}")
+          end
+        end
       end
     end
   end
