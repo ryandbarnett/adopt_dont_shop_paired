@@ -10,10 +10,10 @@
     <section class="pets-on-application">
     <% @application.pets.each do |pet| %>
       <%= link_to pet.name, "/pets/#{pet.id}" %>
-      <% if pet.status == 'adoptable' %>
-        <%= link_to 'Approve Application', "/applications/#{@application.id}/#{pet.id}", method: :patch%>
-      <% else %>
-        <%= link_to 'Revoke Application', "/applications/#{@application.id}/#{pet.id}", method: :patch%>
+      <% if pet.status == 'pending' && pet.approved_app == @application.id %>
+        <%= link_to 'Revoke Application', "/applications/#{@application.id}/#{pet.id}", method: :patch%><br>
+      <% elsif pet.status == 'adoptable' %>
+        <%= link_to 'Approve Application', "/applications/#{@application.id}/#{pet.id}", method: :patch%><br>
       <% end %>
     <% end %>
   <section>
