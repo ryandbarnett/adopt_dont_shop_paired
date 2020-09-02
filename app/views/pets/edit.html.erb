@@ -1,20 +1,20 @@
 <%= form_tag "/pets/#{params[:id]}", method: :patch do %>
   <%= label_tag :name %>
-  <%= text_field_tag :name %>
+  <%= text_field_tag :name, @pet.name %>
 
   <%= label_tag :image %>
-  <%= text_field_tag :image %>
+  <%= text_field_tag :image, @pet.image %>
 
   <%= label_tag :age %>
-  <%= text_field_tag :age %>
+  <%= text_field_tag :age, @pet.age %>
 
-  <%= radio_button_tag :sex, "male" %>
+  <%= radio_button_tag :sex, "male", @pet.sex == 'male' %>
   <%= label_tag :sex_male, "Male" %>
-  <%= radio_button_tag :sex, "female" %>
+  <%= radio_button_tag :sex, "female", @pet.sex == 'female' %>
   <%= label_tag :sex_female, "Female" %>
 
   <%= label_tag :description %>
-  <%= text_area_tag(:description) %>
+  <%= text_area_tag :description, @pet.description %>
 
   <%= submit_tag 'Update Pet' %>
 <% end %>
