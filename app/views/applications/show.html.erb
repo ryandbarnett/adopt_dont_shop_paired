@@ -1,6 +1,6 @@
 <article class='pet-application-details'>
   <h2>Pet Application Number <%= @application.id %></h2>
-  <p>Name: <%= @application.name %></p>
+  <p>Name: <%= link_to "#{@application.name}", "/applications/#{@application.id}"%></p>
   <p>Address: <%= @application.address %></p>
   <p>City: <%= @application.city %></p>
   <p>State: <%= @application.state %></p>
